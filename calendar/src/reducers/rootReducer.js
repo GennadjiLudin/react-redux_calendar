@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { days } from './days';
+import { date } from './date';
 
 const rootReducer = combineReducers({
-    days,
+    date,
 });
 
 export default rootReducer;

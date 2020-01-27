@@ -39,7 +39,7 @@ export const getLastElemsNum = (year, month) => {
 }
 
 export const getRealDayOfWeek = (jsDay) => {
-    if (jsDay == 0) {
+    if (jsDay === 0) {
         return 7;
     } else {
         return jsDay;
@@ -62,7 +62,7 @@ export const getLastDateOfPrevMonth = (year, month) => {
 }
 
 export const getNextYear = (year, month) => {
-    if (month == 11) {
+    if (month === 11) {
         return year + 1;
     } else {
         return year;
@@ -70,7 +70,7 @@ export const getNextYear = (year, month) => {
 }
 
 export const getNextMonth = (month) => {
-    if (month == 11) {
+    if (month === 11) {
         return 0;
     } else {
         return month + 1;
@@ -78,7 +78,7 @@ export const getNextMonth = (month) => {
 }
 
 export const getPrevYear = (year, month) => {
-    if (month == 0) {
+    if (month === 0) {
         return year - 1;
     } else {
         return year;
@@ -86,7 +86,7 @@ export const getPrevYear = (year, month) => {
 }
 
 export const getPrevMonth = (month) => {
-    if (month == 0) {
+    if (month === 0) {
         return 11;
     } else {
         return month - 1;
