@@ -24,12 +24,12 @@ const Header = (props) => {
         <div className="header">
             <span className="header__logo">LOGO</span>
             <span className="header__info">
-                <button onClick={() => onClickHandlerPrev()} >Prev</button>
+                <button onClick={() => onClickHandlerPrev()} className="prev-btn" >Prev</button>
                 <span className="header__month-year-wrap">
                         <span className="header__month">{getMonthName(month)}</span>
                         <span className="header__year">{year}</span>
                 </span>
-                <button onClick={() => onClickHandlerNext()}>Next</button>
+                <button onClick={() => onClickHandlerNext()} className="next-btn" >Next</button>
             </span>
         </div>
     )

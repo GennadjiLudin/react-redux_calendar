@@ -1,0 +1,31 @@
+.dates {
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    height: 94vh;
+    text-align: center;
+    background-color: rgb(241, 239, 239);
+
+    .date {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border: 1px solid rgba(205, 209, 211, 0.808);
+        box-sizing: border-box;
+        
+        &-num {
+            position: absolute;
+            right: .5rem;
+            top: .5rem;
+            font-weight: bold;
+
+            &-prev, &-next {
+                color: rgb(104, 102, 102);
+                font-weight: normal;
+            }
+        }
+    }
+}
+

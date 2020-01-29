@@ -1,24 +1,27 @@
 export const range = (arr, from, to) => {
+    let newArr = [...arr];
     for (let i = from; i <= to; i++) {
-        arr.push(i);
+        newArr.push(i);
     }
-    return arr;
+    return newArr;
 }
 
 export const addFirstElemsNum = (num, elem, arr) => {
+    let newArr = [...arr];
     for (let i = 0; i < num; i++) {
-        arr.unshift(elem);
+        newArr.unshift(elem);
         elem--;
     }
-    return arr;
+    return newArr;
 }
 
 export const addLastElemsNum = (num, elem, arr) => {
+    let newArr = [...arr];
     for (let i = 0; i < num; i++) {
-        arr.push(elem);
+        newArr.push(elem);
         elem++;
     }
-    return arr;
+    return newArr;
 }
 
 export const getLastDateOfMonth = (year, month) => {
