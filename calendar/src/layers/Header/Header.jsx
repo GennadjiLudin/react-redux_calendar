@@ -22,7 +22,7 @@ const Header = (props) => {
 
     return (
         <div className="header">
-            <span className="header__logo">LOGO</span>
+            <span className="header__logo">CALENDAR</span>
             <span className="header__info">
                 <button onClick={() => onClickHandlerPrev()} className="prev-btn" >Prev</button>
                 <span className="header__month-year-wrap">

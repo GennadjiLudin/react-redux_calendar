@@ -10,7 +10,7 @@ const WeekDays = () => {
     return (
         <div className="week-days">
             {weekDaysName.map((weekDayName, index) => (
-                <WeekDay key={index} weekDayName={weekDayName} />
+                <WeekDay variables={index >= 5 ? "weekend" : null} key={index} weekDayName={weekDayName} />
             ))}
         </div>
     )

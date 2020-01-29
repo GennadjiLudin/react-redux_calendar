@@ -1,4 +1,27 @@
 .organizer {
     width: 35rem;
-    height: 96vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+
+    .footer {
+        width: 100%;
+        height: 15%;
+        background-color: #fff;
+        border-radius: .4rem .4rem 0 0;
+    }
 }
+
+.hide {
+    animation: hide 1s ease forwards;
+}
+
+@keyframes hide {
+    0% {display: flex; transform: translateX(0);}
+    50% {display: none; transform: translateX(-100%);}
+    100% {display: none; transform: translateX(-100%);}
+}
+

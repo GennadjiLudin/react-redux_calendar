@@ -4,16 +4,19 @@
     // align-items: center;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    height: 94vh;
+    height: 94.5%;
     text-align: center;
-    background-color: rgb(241, 239, 239);
+    background-color: #fff;
+    grid-template-rows: repeat(6, 1fr);
+    border: none;
 
     .date {
-        width: 100%;
-        height: 100%;
         position: relative;
-        border: 1px solid rgba(205, 209, 211, 0.808);
+        border: solid;
+        border-width: 1px 1px 0 0;
         box-sizing: border-box;
+        border-color: #e6e6e6;
+        height: 100%;  
         
         &-num {
             position: absolute;

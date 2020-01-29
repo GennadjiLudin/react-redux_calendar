@@ -2,9 +2,9 @@ import React from 'react';
 
 import './WeekDay.scss';
 
-const WeekDay = ({ weekDayName }) => {
+const WeekDay = ({ weekDayName, variables = "" }) => {
     return (
-        <div className="week-day">{weekDayName}</div>
+        <div className={`week-day ${variables}`}>{weekDayName}</div>
     )
 }
 
