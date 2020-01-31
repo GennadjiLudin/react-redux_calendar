@@ -1,11 +1,11 @@
 import React from 'react';
 
-import './Todo.scss';
+import './Todos.scss';
 
-const Todo = () => {
+const Todos = () => {
     return (
         <div className="todo">Todo</div>
     )
 }
 
-export default Todo;
+export default Todos;

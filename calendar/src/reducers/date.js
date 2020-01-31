@@ -18,10 +18,10 @@ export const date = (state = initialState, action) => {
                 month: action.payload.type === "next" ? getNextMonth(state.month) : getPrevMonth(state.month),
             }
         case CHANGE_YEAR: 
-        return {
-            ...state,
-            year: action.payload.type === "next" ? state.year + 1 : state.year - 1,
-        }
+            return {
+                ...state,
+                year: action.payload.type === "next" ? state.year + 1 : state.year - 1,
+            }
         default:
             return state;
     }
