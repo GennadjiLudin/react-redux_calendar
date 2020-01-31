@@ -5,43 +5,61 @@ export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const CHANGE_FILTERS = 'CHANGE_FILTERS';
 export const CHANGE_TASK = 'CHANGE_TASK';
 export const DRAG_HAPPENED = 'DRAG_HAPPENED';
+export const SELECT_DAY = 'SELECT_DAY';
 
 
 export const addTask = (id, text, isCompleted) => ({
     type: ADD_TASK,
-    id,
-    text,
-    isCompleted,
+    payload: {
+        id,
+        text,
+        isCompleted,
+    }
 });
+
+export const selectDayAction = id => ({
+    type: SELECT_DAY,
+    payload: {
+        id,
+    }
+})
 
 export const removeTask = id => ({
     type: REMOVE_TASK,
-    id,
+    payload: {
+        id,
+    }
 })
 
 export const completeTask = id => ({
     type: COMPLETE_TASK,
-    id,
+    payload: {
+        id,
+    }
 })
 
 export const changeFilter = activeFilter => ({
     type: CHANGE_FILTERS,
-    activeFilter,
+    payload: {
+        activeFilter,
+    }
 })
 
 export const changeTask = (id, text) => ({
     type: CHANGE_TASK,
-    id,
-    text,
+    payload: {
+        id,
+        text,
+    }
 })
 
-export const sortTasks = (
-    droppableIndexStart,
-    droppableIndexEnd,
-    draggableId
-) => ({
-        type: DRAG_HAPPENED,
-        droppableIndexStart,
-        droppableIndexEnd,
-        draggableId
-    })
+// export const sortTasks = (
+//     droppableIndexStart,
+//     droppableIndexEnd,
+//     draggableId
+// ) => ({
+//         type: DRAG_HAPPENED,
+//         droppableIndexStart,
+//         droppableIndexEnd,
+//         draggableId
+//     })

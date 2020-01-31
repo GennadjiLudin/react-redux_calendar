@@ -11,16 +11,17 @@ const initialState = {
 }
 
 export const date = (state = initialState, action) => {
-    switch(action.type) {
+    const { type, payload } = action;
+    switch(type) {
         case CHANGE_MONTH: 
             return {
                 ...state,
-                month: action.payload.type === "next" ? getNextMonth(state.month) : getPrevMonth(state.month),
+                month: payload.type === "next" ? getNextMonth(state.month) : getPrevMonth(state.month),
             }
         case CHANGE_YEAR: 
             return {
                 ...state,
-                year: action.payload.type === "next" ? state.year + 1 : state.year - 1,
+                year: payload.type === "next" ? state.year + 1 : state.year - 1,
             }
         default:
             return state;

@@ -43,12 +43,12 @@ const mapStateToProps = state => {
     };
   };
   
-  const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
       changeMonth: type => dispatch(changeMonth(type)),
       changeYear: type => dispatch(changeYear(type))
     }
-  };
+};
 
 export default connect(
     mapStateToProps,

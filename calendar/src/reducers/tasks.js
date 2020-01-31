@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED } from '../actions/actionCreator';
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED, SELECT_DAY } from '../actions/actionCreator';
 
 let TASKS = [];
 
@@ -6,6 +6,11 @@ if(!TASKS || !TASKS.tasks || !TASKS.tasks.length) {
     TASKS = {
         tasks: [],
     }
+}
+
+const initialState = {
+    allDays: [],
+    selectedDay: [],
 }
 
 // const TASKS = [
@@ -26,45 +31,56 @@ if(!TASKS || !TASKS.tasks || !TASKS.tasks.length) {
 //     },
 // ];
 
-const tasks = (state = TASKS.tasks, {id, text, isCompleted, type, droppableIndexStart, droppableIndexEnd, draggableId}) => {
+const tasks = (state = initialState, action) => {
+    const { type, payload } = action;
     switch(type) {
-        case ADD_TASK:
-            return [
-                ...state, {
-                    id,
-                    text,
-                    isCompleted,
-                }
-            ];
-        case REMOVE_TASK:
-            return [...state].filter(task => task.id !== id);
-        case COMPLETE_TASK:
-            return [...state].map(task => {
-                let newTask = {...task};
-                if(newTask.id === id) {
-                    newTask.isCompleted = !newTask.isCompleted;
-                }
-                return newTask;
-            });
-        case CHANGE_TASK:
-            return [...state].map(task => {
-                let newTask = {...task};
-                if(newTask.id === id) {
-                    newTask.text = text;
-                }
-                return newTask;
-            });
+        case SELECT_DAY:
+            let newDays = {...state};
+            // if(!newDays.allDays[id])
+            //     newDays.allDays[id] = [];
 
-        case DRAG_HAPPENED:
-                let newState = [...state];
-                const taskReplaced = newState.splice(droppableIndexStart, 1);
-                newState.splice(droppableIndexEnd, 0, ...taskReplaced);
-            return newState;
-
+            //     newDays.selectedDay = newDays.selectedDay[payload.id];
+            //     console.log(newDays);
+            return newDays;
+        // case ADD_TASK:
+        //     return {
+        //         ...state, 
+        //         tasks: {
+        //             id: payload.id,
+        //             text: payload.text,
+        //             isCompleted: payload.isCompleted,
+        //         }
+        //     };
+        // case REMOVE_TASK:
+        //     return {...state.tasks.filter(task => task.id !== payload.id)};
+        // case COMPLETE_TASK:
+        //     return {
+        //         ...state.tasks.map(task => {
+        //             let newTask = {...task};
+        //             if(newTask.id === payload.id) {
+        //                 newTask.isCompleted = !newTask.isCompleted;
+        //             }
+        //             return newTask;
+        //         })
+        //     };
+        // case CHANGE_TASK:
+        //     return {
+        //         ...state.tasks.map(task => {
+        //             let newTask = {...task};
+        //             if(newTask.id === payload.id) {
+        //                 newTask.text = payload.text;
+        //             }
+        //             return newTask;
+        //         })
+        //     };
+        // case DRAG_HAPPENED:
+        //         let newState = {...state.tasks};
+        //         const taskReplaced = newState.splice(droppableIndexStart, 1);
+        //         newState.splice(droppableIndexEnd, 0, ...taskReplaced);
+        //     return newState;
         default:
             return state;
     }
 }
-
 
 export default tasks;

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { setNumWithZero } from '../../helpers/helpers';
+import { selectDayAction } from '../../actions/actionCreator';
 
 import './Dates.scss';
 
 const Dates = (props) => {
-    const { datesArr, arrPrev, arrNext, month, year } = props;
+    const { datesArr, arrPrev, arrNext, month, year, selectDay } = props;
+
+    const onClickDateHandler = e => {
+        selectDay(e.target.id);
+    }
+
     return (
         <div className="dates">
             {arrPrev.map(date => (
@@ -26,6 +32,7 @@ const Dates = (props) => {
                     className="date" 
                     key={`${year}${setNumWithZero(month)}${setNumWithZero(date)}`}
                     id={`${year}${setNumWithZero(month)}${setNumWithZero(date)}`}
+                    onClick={e => onClickDateHandler(e)}
                 >
                     <span className="date-num">{setNumWithZero(date)}</span>
                     <div className="date-wrap__info">
@@ -57,7 +64,13 @@ const mapStateToProps = state => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+      selectDay: id => dispatch(selectDayAction(id)),
+    }
+};
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps,
 )(Dates);
