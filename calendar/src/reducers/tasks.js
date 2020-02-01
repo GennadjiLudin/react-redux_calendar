@@ -1,16 +1,38 @@
 import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED, SELECT_DAY } from '../actions/actionCreator';
 
-let TASKS = [];
-
-if(!TASKS || !TASKS.tasks || !TASKS.tasks.length) {
-    TASKS = {
-        tasks: [],
-    }
-}
-
 const initialState = {
-    allDays: [],
-    selectedDay: [],
+    allDays: {
+        20200101: {
+            id: 20200101,
+            tasks: [
+                {
+                    title: "Hellow worlds",
+                },
+                {
+                    title: "Hellow worlds",
+                },
+                {
+                    title: "Hellow worlds",
+                },
+                {
+                    title: "Hellow worlds",
+                },
+                {
+                    title: "Hellow worlds",
+                },
+                {
+                    title: "Hellow worlds",
+                },
+                {
+                    title: "Hellow worlds",
+                },
+                {
+                    title: "Hellow worlds",
+                },
+            ]
+        }
+    },
+    selectedDay: null,
 }
 
 // const TASKS = [
@@ -35,13 +57,18 @@ const tasks = (state = initialState, action) => {
     const { type, payload } = action;
     switch(type) {
         case SELECT_DAY:
-            let newDays = {...state};
-            // if(!newDays.allDays[id])
-            //     newDays.allDays[id] = [];
-
-            //     newDays.selectedDay = newDays.selectedDay[payload.id];
-            //     console.log(newDays);
-            return newDays;
+            let newDays = {...state.allDays};
+            if (!newDays[payload.id]) {
+                newDays[payload.id] = {
+                    id: payload.id,
+                    tasks: [],
+                };
+            }
+            return {
+                ...state, 
+                allDays: newDays,
+                selectedDay: newDays[payload.id],
+            };
         // case ADD_TASK:
         //     return {
         //         ...state, 
