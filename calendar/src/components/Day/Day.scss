@@ -1,0 +1,28 @@
+.date {
+    position: relative;
+    border: solid;
+    border-width: 1px 1px 0 0;
+    box-sizing: border-box;
+    border-color: #e6e6e6;
+    height: 100%;
+    
+    &-num {
+        position: absolute;
+        right: .5rem;
+        top: .5rem;
+        font-weight: bold;
+        text-align: center;
+
+        &-current {
+            background-color: red;
+            color: #fff;
+            border-radius: 35%;
+            padding: .1rem .6rem .3rem .5rem;
+        }
+
+        &-prev, &-next {
+            color: rgb(104, 102, 102);
+            font-weight: normal;
+        }
+    }
+}
