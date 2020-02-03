@@ -8,7 +8,7 @@ export const DRAG_HAPPENED = 'DRAG_HAPPENED';
 export const SELECT_DAY = 'SELECT_DAY';
 
 
-export const addTask = (id, text, isCompleted) => ({
+export const addTaskAction = (id, text, isCompleted) => ({
     type: ADD_TASK,
     payload: {
         id,
@@ -24,28 +24,28 @@ export const selectDayAction = id => ({
     }
 })
 
-export const removeTask = id => ({
+export const removeTaskAction = id => ({
     type: REMOVE_TASK,
     payload: {
         id,
     }
 })
 
-export const completeTask = id => ({
+export const completeTaskAction = id => ({
     type: COMPLETE_TASK,
     payload: {
         id,
     }
 })
 
-export const changeFilter = activeFilter => ({
+export const changeFilterAction = activeFilter => ({
     type: CHANGE_FILTERS,
     payload: {
         activeFilter,
     }
 })
 
-export const changeTask = (id, text) => ({
+export const changeTaskAction = (id, text) => ({
     type: CHANGE_TASK,
     payload: {
         id,
@@ -53,13 +53,13 @@ export const changeTask = (id, text) => ({
     }
 })
 
-// export const sortTasks = (
-//     droppableIndexStart,
-//     droppableIndexEnd,
-//     draggableId
-// ) => ({
-//         type: DRAG_HAPPENED,
-//         droppableIndexStart,
-//         droppableIndexEnd,
-//         draggableId
-//     })
+export const sortTasksAction = (
+    droppableIndexStart,
+    droppableIndexEnd,
+    draggableId
+) => ({
+        type: DRAG_HAPPENED,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId
+    })

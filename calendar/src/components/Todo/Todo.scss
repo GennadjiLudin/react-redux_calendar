@@ -1,0 +1,43 @@
+.todo-item {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: .5rem;
+    background-color: #f7f7f7;
+
+    .text {
+        width: 30rem;
+    }
+
+    .mark {
+        margin-right: 1rem;
+        color: #24577B;
+        cursor: pointer;
+        
+        &-complete {
+            display: block;
+            color: #7EB12C;
+            margin-right: 1rem;
+            border: none;
+            opacity: .3;
+        }
+    }
+
+    .delete {
+        opacity: .3;
+        margin-left: auto;
+        color: #ff3100;
+        cursor: pointer;
+    }
+
+    .completed {
+        text-decoration: line-through;
+        opacity: .3;
+    }
+
+    &:hover .delete, &:hover .mark-complete, &:hover .completed {
+        opacity: 1;
+    }
+}

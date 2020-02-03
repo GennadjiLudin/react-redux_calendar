@@ -2,9 +2,9 @@ import React from 'react';
 
 import './DayTodo.scss';
 
-const DayTodo = ({title, variables, onClickDateHandler}) => {
+const DayTodo = ({title, variables}) => {
     return (
-        <div className={`day-todo ${variables}`} onClick={e => onClickDateHandler(e)}>{title}</div>
+        <div className={`day-todo ${variables}`}>{title}</div>
     )
 }
 

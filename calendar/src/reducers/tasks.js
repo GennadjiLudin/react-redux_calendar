@@ -2,32 +2,40 @@ import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED, SELEC
 
 const initialState = {
     allDays: {
-        20200101: {
-            id: 20200101,
+        20200103: {
+            id: 20200103,
             tasks: [
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
                 {
                     title: "Hellow worlds",
+                    isCompleted: false,
                 },
             ]
         }
