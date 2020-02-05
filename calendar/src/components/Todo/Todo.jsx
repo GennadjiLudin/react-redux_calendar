@@ -1,6 +1,6 @@
-  
 import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import uuid from 'react-uuid';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ const Todo = (props) => {
     const {title, isCompleted, removeTask, id, completeTask, index} = props;
 
     return (
-        <Draggable draggableId={String(id)} index={index}>
+        <Draggable draggableId={String(uuid())} index={index}>
             {provided => (
                 <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className="todo-item">
                     <FontAwesomeIcon 
@@ -37,7 +37,7 @@ const Todo = (props) => {
 }
 
 Todo.defaultProps = {
-    text: '',
+    title: '',
     isCompleted: false,
     removeTask: () => {},
     completeTask: () => {},

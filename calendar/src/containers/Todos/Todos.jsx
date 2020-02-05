@@ -12,8 +12,6 @@ import './Todos.scss';
 const Todos = (props) => {
     const { selectedDay, addTask, removeTask, completeTask, changeFilter, sortTasks, filters } = props;
 
-    const isTasksExist = selectedDay && selectedDay.tasks.length > 0;
-
     // const addTask = ({key}) => {
     //     const {taskText} = this.state;
 
@@ -42,42 +40,39 @@ const Todos = (props) => {
     const getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
     const getCompletedCounter = tasks => tasks.filter(task => task.isCompleted).length;
 
-    const onDragEnd = ({destination, source, draggableId}) => {
+    // const onDragEnd = ({destination, source, draggableId}) => {
 
-        if(!destination) {
-            return;
-        }
+    //     if(!destination) {
+    //         return;
+    //     }
         
-        sortTasks(
-            source.index,
-            destination.index,
-            draggableId
-        );
-    }
+    //     sortTasks(
+    //         source.index,
+    //         destination.index,
+    //         draggableId
+    //     );
+    // }
 
-    const filteredTasks = filterTasks(selectedDay, filters);
+    const filteredTasks = filterTasks(selectedDay.tasks, filters);
     const activeCounter = getActiveTasksCounter(selectedDay.tasks);
     const completedCounter = getCompletedCounter(selectedDay.tasks);
-
+    
     return (
-        // <div className="todos">
-        //     {selectedDay && (
-        //         selectedDay.tasks.length === 0 ? (
-        //             <>
-        //                 <span>В настояще время нет активных задач!</span>
-        //                 <button>Добавить задачу</button>
-        //             </>
-        //         ) : (
-        //             selectedDay.tasks.map(task => (
-        //                 <div>{task.title}</div>
-        //             ))
-        //         )
-        //     )}
-        // </div>
-        <DragDropContext onDragEnd={onDragEnd}>
+        <DragDropContext /*onDragEnd={onDragEnd}*/>
             <div className="todos">
-                <TodoList completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} activeFilter={filters} />
-                {isTasksExist && <FilterBlok changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={selectedDay} activeFilter={filters} />}
+                {selectedDay && (
+                    selectedDay.tasks.length === 0 ? (
+                        <>
+                            <span>В настояще время нет активных задач!</span>
+                            <button>Добавить задачу</button>
+                        </>
+                    ) : (
+                        <>
+                            <TodoList completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} activeFilter={filters} />
+                            <FilterBlok changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={selectedDay.tasks} activeFilter={filters} />
+                        </>
+                    )
+                )}
             </div>
         </DragDropContext>
     )

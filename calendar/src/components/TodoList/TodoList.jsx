@@ -1,6 +1,7 @@
 import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Droppable } from "react-beautiful-dnd";
+import uuid from 'react-uuid';
 
 import Todo from '../Todo/Todo';
 
@@ -10,25 +11,25 @@ const TodoList = (props) => {
     const {tasksList, removeTask, completeTask, activeFilter} = props;
 
     return (
-        <Droppable droppableId={String(Date.now())}>
+        <Droppable droppableId={String(uuid())}>
             {provided => (
                 <>
                     <ul {...provided.droppableProps} ref={provided.innerRef} className="todo-list">
                         <TransitionGroup>
-                            {tasksList.map(({id, text, isCompleted}, index) => (
+                            {tasksList.map((taskList, index) => (
                                 <CSSTransition
-                                    key={id}
+                                    key={uuid()}
                                     timeout={{enter: 300, exit: 50}}
                                     classNames="item"
                                 > 
                                     <Todo
                                         completeTask={completeTask}
                                         removeTask={removeTask}
-                                        id={id}
-                                        key={id}
-                                        text={text}
+                                        id={taskList.id}
+                                        key={uuid()}
+                                        title={taskList.title}
                                         index={index}
-                                        isCompleted={isCompleted}
+                                        isCompleted={taskList.isCompleted}
                                     />
                                 </CSSTransition>
                             ))}

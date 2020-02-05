@@ -2,64 +2,98 @@ import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED, SELEC
 
 const initialState = {
     allDays: {
-        20200103: {
-            id: 20200103,
+        20200105: {
+            id: 20200105,
             tasks: [
                 {
+                    id: 1,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
                 {
+                    id: 2,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
                 {
+                    id: 3,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
                 {
+                    id: 4,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
                 {
+                    id: 5,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
                 {
+                    id: 6,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
                 {
+                    id: 7,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
                 {
+                    id: 8,
                     title: "Hellow worlds",
                     isCompleted: false,
                 },
             ]
         }
     },
-    selectedDay: null,
+    selectedDay: {
+        id: 20200105,
+        tasks: [
+            {
+                id: 1,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+            {
+                id: 2,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+            {
+                id: 3,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+            {
+                id: 4,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+            {
+                id: 5,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+            {
+                id: 6,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+            {
+                id: 7,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+            {
+                id: 8,
+                title: "Hellow worlds",
+                isCompleted: false,
+            },
+        ]
+    },
 }
-
-// const TASKS = [
-//     {
-//         id: 1,
-//         text: 'Learn ReactJS',
-//         isCompleted: true,
-//     },
-//     {
-//         id: 2,
-//         text: 'Learn Router',
-//         isCompleted: false,
-//     },
-//     {
-//         id: 3,
-//         text: 'Learn Redux',
-//         isCompleted: false,
-//     },
-// ];
 
 const tasks = (state = initialState, action) => {
     const { type, payload } = action;
@@ -86,30 +120,30 @@ const tasks = (state = initialState, action) => {
         //             isCompleted: payload.isCompleted,
         //         }
         //     };
-        // case REMOVE_TASK:
-        //     return {...state.tasks.filter(task => task.id !== payload.id)};
-        // case COMPLETE_TASK:
-        //     return {
-        //         ...state.tasks.map(task => {
-        //             let newTask = {...task};
-        //             if(newTask.id === payload.id) {
-        //                 newTask.isCompleted = !newTask.isCompleted;
-        //             }
-        //             return newTask;
-        //         })
-        //     };
+        case REMOVE_TASK:
+            return {...state.selectedDay.tasks.filter(task => task.id !== payload.id)};
+        case COMPLETE_TASK:
+            return {
+                ...state.selectedDay.tasks.map(task => {
+                    let newTask = {...task};
+                    if(newTask.id === payload.id) {
+                        newTask.isCompleted = !newTask.isCompleted;
+                    }
+                    return newTask;
+                })
+            };
         // case CHANGE_TASK:
         //     return {
-        //         ...state.tasks.map(task => {
+        //         ...state.selectedDay.tasks.map(task => {
         //             let newTask = {...task};
         //             if(newTask.id === payload.id) {
-        //                 newTask.text = payload.text;
+        //                 newTask.title = payload.title;
         //             }
         //             return newTask;
         //         })
         //     };
         // case DRAG_HAPPENED:
-        //         let newState = {...state.tasks};
+        //         let newState = {...state.selectedDay.tasks};
         //         const taskReplaced = newState.splice(droppableIndexStart, 1);
         //         newState.splice(droppableIndexEnd, 0, ...taskReplaced);
         //     return newState;
