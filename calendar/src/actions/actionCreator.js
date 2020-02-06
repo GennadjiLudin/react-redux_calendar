@@ -59,7 +59,9 @@ export const sortTasksAction = (
     draggableId
 ) => ({
         type: DRAG_HAPPENED,
-        droppableIndexStart,
-        droppableIndexEnd,
-        draggableId
+        payload: {
+            droppableIndexStart,
+            droppableIndexEnd,
+            draggableId
+        }
     })

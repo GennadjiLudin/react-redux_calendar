@@ -12,7 +12,7 @@ const Todo = (props) => {
     const {title, isCompleted, removeTask, id, completeTask, index} = props;
 
     return (
-        <Draggable draggableId={String(uuid())} index={index}>
+        <Draggable draggableId={String(id)} index={index}>
             {provided => (
                 <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className="todo-item">
                     <FontAwesomeIcon 

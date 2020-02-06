@@ -26,39 +26,45 @@ const Todos = (props) => {
     //     }
     // }
 
-    const filterTasks = (tasks, activeFilter) => {
-        switch (activeFilter) {
-            case 'completed':
-                return tasks.filter(task => task.isCompleted);
-            case 'active':
-                return tasks.filter(task => !task.isCompleted);
-            default:
-                return tasks;
+    const [filteredTasks, setFilteredTasks] = useState([]);
+    const [activeCounter, setActiveCounter] = useState(0);
+    const [completedCounter, setCompletedCounter] = useState(0);
+
+    useEffect(() => {
+        const filterTasks = (tasks, activeFilter) => {
+            switch (activeFilter) {
+                case 'completed':
+                    return tasks.filter(task => task.isCompleted);
+                case 'active':
+                    return tasks.filter(task => !task.isCompleted);
+                default:
+                    return tasks;
+            }
         }
+    
+        const getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
+        const getCompletedCounter = tasks => tasks.filter(task => task.isCompleted).length;
+    
+        setFilteredTasks(filterTasks(selectedDay.tasks, filters));
+        setActiveCounter(getActiveTasksCounter(selectedDay.tasks));
+        setCompletedCounter(getCompletedCounter(selectedDay.tasks));
+    }, [])
+    
+    const onDragEnd = ({destination, source, draggableId}) => {
+    
+        if(!destination) {
+            return;
+        }
+        
+        sortTasks(
+            source.index,
+            destination.index,
+            draggableId
+        );
     }
 
-    const getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
-    const getCompletedCounter = tasks => tasks.filter(task => task.isCompleted).length;
-
-    // const onDragEnd = ({destination, source, draggableId}) => {
-
-    //     if(!destination) {
-    //         return;
-    //     }
-        
-    //     sortTasks(
-    //         source.index,
-    //         destination.index,
-    //         draggableId
-    //     );
-    // }
-
-    const filteredTasks = filterTasks(selectedDay.tasks, filters);
-    const activeCounter = getActiveTasksCounter(selectedDay.tasks);
-    const completedCounter = getCompletedCounter(selectedDay.tasks);
-    
     return (
-        <DragDropContext /*onDragEnd={onDragEnd}*/>
+        <DragDropContext onDragEnd={onDragEnd}>
             <div className="todos">
                 {selectedDay && (
                     selectedDay.tasks.length === 0 ? (

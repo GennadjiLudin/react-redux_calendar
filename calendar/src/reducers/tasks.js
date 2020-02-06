@@ -91,7 +91,7 @@ const initialState = {
                 title: "Hellow worlds",
                 isCompleted: false,
             },
-        ]
+        ],
     },
 }
 
@@ -142,11 +142,12 @@ const tasks = (state = initialState, action) => {
         //             return newTask;
         //         })
         //     };
-        // case DRAG_HAPPENED:
-        //         let newState = {...state.selectedDay.tasks};
-        //         const taskReplaced = newState.splice(droppableIndexStart, 1);
-        //         newState.splice(droppableIndexEnd, 0, ...taskReplaced);
-        //     return newState;
+        case DRAG_HAPPENED:
+                let newState = [...state.selectedDay.tasks];
+                console.log(newState);
+                const taskReplaced = newState.splice(payload.droppableIndexStart, 1);
+                newState.splice(payload.droppableIndexEnd, 0, ...taskReplaced);
+            return newState;
         default:
             return state;
     }
