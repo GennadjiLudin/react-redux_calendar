@@ -121,7 +121,19 @@ const tasks = (state = initialState, action) => {
         //         }
         //     };
         case REMOVE_TASK:
-            return {...state.selectedDay.tasks.filter(task => task.id !== payload.id)};
+            let newSelectedDay = {
+                ...state.selectedDay,
+                tasks: state.selectedDay.tasks.filter(task => task.id !== payload.taskId)
+            };
+            
+            return {
+                ...state,
+                selectedDay: newSelectedDay,
+                allDays: {
+                    ...state.allDays,
+                    [payload.selectedId]: newSelectedDay
+                }
+            };
         case COMPLETE_TASK:
             return {
                 ...state.selectedDay.tasks.map(task => {

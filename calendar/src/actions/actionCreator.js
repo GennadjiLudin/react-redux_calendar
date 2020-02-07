@@ -24,10 +24,11 @@ export const selectDayAction = id => ({
     }
 })
 
-export const removeTaskAction = id => ({
+export const removeTaskAction = (taskId, selectedId) => ({
     type: REMOVE_TASK,
     payload: {
-        id,
+        taskId,
+        selectedId,
     }
 })
 

@@ -48,10 +48,9 @@ const Todos = (props) => {
         setFilteredTasks(filterTasks(selectedDay.tasks, filters));
         setActiveCounter(getActiveTasksCounter(selectedDay.tasks));
         setCompletedCounter(getCompletedCounter(selectedDay.tasks));
-    }, [])
+    }, [filters, selectedDay.tasks])
     
     const onDragEnd = ({destination, source, draggableId}) => {
-    
         if(!destination) {
             return;
         }
@@ -74,7 +73,13 @@ const Todos = (props) => {
                         </>
                     ) : (
                         <>
-                            <TodoList completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} activeFilter={filters} />
+                            <TodoList 
+                                selectedId={selectedDay.id} 
+                                completeTask={completeTask} 
+                                tasksList={filters === "all" ? selectedDay.tasks : filteredTasks} 
+                                removeTask={removeTask} 
+                                activeFilter={filters} 
+                            />
                             <FilterTodo changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={selectedDay.tasks} activeFilter={filters} />
                         </>
                     )
@@ -86,7 +91,7 @@ const Todos = (props) => {
 
 const mapStateToProps = state => {
     const { selectedDay } = state.tasks;
-    const { filters } = state.filters;
+    const { filters } = state;
     return {
         selectedDay,
         filters,
@@ -96,7 +101,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addTask: (id, text, isCompleted) => dispatch(addTaskAction(id, text, isCompleted)),
-        removeTask: id => dispatch(removeTaskAction(id)),
+        removeTask: (id, selectedId) => dispatch(removeTaskAction(id, selectedId)),
         completeTask: id => dispatch(completeTaskAction(id)),
         changeFilter: activeFilter => dispatch(changeFilterAction(activeFilter)),
         sortTasks: (droppableIndexStart, droppableIndexEnd, draggableId) => dispatch(sortTasksAction(droppableIndexStart, droppableIndexEnd, draggableId)),
