@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './FilterBlok.scss';
+import './FilterTodo.scss';
 
 const FILTERS_BTN = [
     {
@@ -17,10 +17,10 @@ const FILTERS_BTN = [
     },
 ];
 
-const FilterBlok = (props) => {
+const FilterTodo = (props) => {
     const {tasks, activeCounter, completedCounter, activeFilter, changeFilter} = props;
     return (
-        <div className="filter-blok">
+        <div className="filter-todo">
             <div className="btn-group">
                 {FILTERS_BTN.map(({text, id}) => (
                     <button 
@@ -35,10 +35,10 @@ const FilterBlok = (props) => {
     )
 }
 
-FilterBlok.defaultProps = {
+FilterTodo.defaultProps = {
     amount: 0,
     text: 'Add todo',
     changeFilter: () => {},
 }
 
-export default FilterBlok;
+export default FilterTodo;

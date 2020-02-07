@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import TodoList from '../../components/TodoList/TodoList';
-import FilterBlok from '../../components/FilterBlok/FilterBlok';
+import FilterTodo from '../../components/FilterTodo/FilterTodo';
 import { addTaskAction, removeTaskAction, completeTaskAction, changeFilterAction, sortTasksAction } from '../../actions/actionCreator';
 
 import './Todos.scss';
@@ -75,7 +75,7 @@ const Todos = (props) => {
                     ) : (
                         <>
                             <TodoList completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} activeFilter={filters} />
-                            <FilterBlok changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={selectedDay.tasks} activeFilter={filters} />
+                            <FilterTodo changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={selectedDay.tasks} activeFilter={filters} />
                         </>
                     )
                 )}

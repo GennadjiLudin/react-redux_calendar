@@ -1,4 +1,4 @@
-.filter-blok {
+.filter-todo {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -9,7 +9,6 @@
         display: flex;
         justify-content: flex-start;
         margin-top: 1rem;
-        width: 23rem;
     
         .filter-btn {
             font-size: 1rem;
@@ -32,6 +31,10 @@
                 height: .125rem;
             }
         }
+    }
+
+    .amount {
+        padding: .3rem;
     }
 }
 
