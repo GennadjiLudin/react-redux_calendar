@@ -131,18 +131,27 @@ const tasks = (state = initialState, action) => {
                 selectedDay: newSelectedDay,
                 allDays: {
                     ...state.allDays,
-                    [payload.selectedId]: newSelectedDay
-                }
+                    [payload.selectedId]: newSelectedDay,
+                },
             };
         case COMPLETE_TASK:
+            let newStateTasks = {
+                ...state.selectedDay,
+                tasks: state.selectedDay.tasks.map(task => {
+                        let newTask = {...task};
+                        if(newTask.id === payload.taskId) {
+                            newTask.isCompleted = !newTask.isCompleted;
+                        }
+                        return newTask;
+                    })
+                };
             return {
-                ...state.selectedDay.tasks.map(task => {
-                    let newTask = {...task};
-                    if(newTask.id === payload.id) {
-                        newTask.isCompleted = !newTask.isCompleted;
-                    }
-                    return newTask;
-                })
+                ...state,
+                selectedDay: newStateTasks,
+                allDays: {
+                    ...state.allDays,
+                    [payload.selectedId]: newStateTasks,
+                },
             };
         // case CHANGE_TASK:
         //     return {
@@ -154,12 +163,18 @@ const tasks = (state = initialState, action) => {
         //             return newTask;
         //         })
         //     };
-        case DRAG_HAPPENED:
-                let newState = [...state.selectedDay.tasks];
-                console.log(newState);
-                const taskReplaced = newState.splice(payload.droppableIndexStart, 1);
-                newState.splice(payload.droppableIndexEnd, 0, ...taskReplaced);
-            return newState;
+        // case DRAG_HAPPENED:
+        //         let newState = [...state.selectedDay.tasks];
+        //         const taskReplaced = newState.splice(payload.droppableIndexStart, 1);
+        //         newState.splice(payload.droppableIndexEnd, 0, ...taskReplaced);
+        //     return {
+        //         ...state,
+        //         selectedDay: newState,
+        //         allDays: {
+        //             ...state.allDays,
+        //             [payload.selectedId]: newState,
+        //         },
+        //     };
         default:
             return state;
     }

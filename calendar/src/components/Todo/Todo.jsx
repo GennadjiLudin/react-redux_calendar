@@ -11,9 +11,9 @@ const Todo = (props) => {
     const {title, isCompleted, removeTask, id, completeTask, index, selectedId} = props;
 
     return (
-        <Draggable draggableId={String(id)} index={index}>
-            {provided => (
-                <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className="todo-item">
+        // <Draggable draggableId={String(id)} index={index}>
+        //     {provided => (
+                <li /*{...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}*/ className="todo-item">
                     <FontAwesomeIcon 
                         onClick={() => completeTask(id)}
                         icon={isCompleted ? faCheck : faCircle}
@@ -31,8 +31,8 @@ const Todo = (props) => {
                         className="delete"
                     />
                 </li>
-            )}
-        </Draggable>
+        //     )}
+        // </Draggable>
     );
 }
 

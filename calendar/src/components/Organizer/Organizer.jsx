@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Todos from '../../containers/Todos/Todos';
 import Editbox from '../../containers/Editbox/Editbox';
 import Footer from '../Footer/Footer';
+import Section from '../../containers/Sections/Section';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft , faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
@@ -14,8 +15,12 @@ const Organizer = () => {
 
     return (
         <div className={`organizer ${hide ? "hide" : ""}`}>
-            <Todos />
-            <Editbox />
+            <Section>
+                <Todos />
+            </Section>
+            <Section>
+                <Editbox />
+            </Section>
             <Footer />
             <FontAwesomeIcon
                 className={`organizer-btn ${hide ? "organizer-btn-show" : ""}`}

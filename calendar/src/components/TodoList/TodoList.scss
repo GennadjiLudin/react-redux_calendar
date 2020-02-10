@@ -1,6 +1,11 @@
+.todo-list-wrap {
+    width: 238px;
+    height: 150px;
+    overflow: auto;
+}
+
 .todo-list {
     list-style: none;
-    margin-top: 2rem;
     padding: 0;
 }
 

@@ -32,10 +32,11 @@ export const removeTaskAction = (taskId, selectedId) => ({
     }
 })
 
-export const completeTaskAction = id => ({
+export const completeTaskAction = (taskId, selectedId) => ({
     type: COMPLETE_TASK,
     payload: {
-        id,
+        taskId,
+        selectedId,
     }
 })
 

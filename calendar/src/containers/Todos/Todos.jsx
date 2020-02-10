@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import TodoList from '../../components/TodoList/TodoList';
 import FilterTodo from '../../components/FilterTodo/FilterTodo';
-import { addTaskAction, removeTaskAction, completeTaskAction, changeFilterAction, sortTasksAction } from '../../actions/actionCreator';
+import { addTaskAction, sortTasksAction } from '../../actions/actionCreator';
 
 import './Todos.scss';
 
 
 const Todos = (props) => {
-    const { selectedDay, addTask, removeTask, completeTask, changeFilter, sortTasks, filters } = props;
+    const { selectedDay, addTask, sortTasks } = props;
 
     // const addTask = ({key}) => {
     //     const {taskText} = this.state;
@@ -25,46 +25,23 @@ const Todos = (props) => {
     //         });
     //     }
     // }
-
-    const [filteredTasks, setFilteredTasks] = useState([]);
-    const [activeCounter, setActiveCounter] = useState(0);
-    const [completedCounter, setCompletedCounter] = useState(0);
-
-    useEffect(() => {
-        const filterTasks = (tasks, activeFilter) => {
-            switch (activeFilter) {
-                case 'completed':
-                    return tasks.filter(task => task.isCompleted);
-                case 'active':
-                    return tasks.filter(task => !task.isCompleted);
-                default:
-                    return tasks;
-            }
-        }
     
-        const getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
-        const getCompletedCounter = tasks => tasks.filter(task => task.isCompleted).length;
-    
-        setFilteredTasks(filterTasks(selectedDay.tasks, filters));
-        setActiveCounter(getActiveTasksCounter(selectedDay.tasks));
-        setCompletedCounter(getCompletedCounter(selectedDay.tasks));
-    }, [filters, selectedDay.tasks])
-    
-    const onDragEnd = ({destination, source, draggableId}) => {
-        if(!destination) {
-            return;
-        }
+    // const onDragEnd = ({destination, source, draggableId}) => {
+    //     if(!destination) {
+    //         return;
+    //     }
         
-        sortTasks(
-            source.index,
-            destination.index,
-            draggableId
-        );
-    }
+    //     sortTasks(
+    //         source.index,
+    //         destination.index,
+    //         draggableId
+    //     );
+    // }
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
+        <DragDropContext /*onDragEnd={onDragEnd}*/>
             <div className="todos">
+                <div className="title">Список задач</div>
                 {selectedDay && (
                     selectedDay.tasks.length === 0 ? (
                         <>
@@ -75,12 +52,8 @@ const Todos = (props) => {
                         <>
                             <TodoList 
                                 selectedId={selectedDay.id} 
-                                completeTask={completeTask} 
-                                tasksList={filters === "all" ? selectedDay.tasks : filteredTasks} 
-                                removeTask={removeTask} 
-                                activeFilter={filters} 
                             />
-                            <FilterTodo changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={selectedDay.tasks} activeFilter={filters} />
+                            <FilterTodo />
                         </>
                     )
                 )}
@@ -91,19 +64,14 @@ const Todos = (props) => {
 
 const mapStateToProps = state => {
     const { selectedDay } = state.tasks;
-    const { filters } = state;
     return {
         selectedDay,
-        filters,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         addTask: (id, text, isCompleted) => dispatch(addTaskAction(id, text, isCompleted)),
-        removeTask: (id, selectedId) => dispatch(removeTaskAction(id, selectedId)),
-        completeTask: id => dispatch(completeTaskAction(id)),
-        changeFilter: activeFilter => dispatch(changeFilterAction(activeFilter)),
         sortTasks: (droppableIndexStart, droppableIndexEnd, draggableId) => dispatch(sortTasksAction(droppableIndexStart, droppableIndexEnd, draggableId)),
     }
 };

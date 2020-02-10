@@ -1,21 +1,41 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Droppable } from "react-beautiful-dnd";
+import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 
 import Todo from '../Todo/Todo';
+import { removeTaskAction, completeTaskAction} from '../../actions/actionCreator';
 
 import './TodoList.scss';
 
 const TodoList = (props) => {
-    const {tasksList, removeTask, completeTask, activeFilter, selectedId} = props;
+    const {removeTask, completeTask, selectedId, selectedDay, filters} = props;
+
+    const [filteredTasks, setFilteredTasks] = useState([]);
+
+    useEffect(() => {
+        const filterTasks = (tasks, activeFilter) => {
+            switch (activeFilter) {
+                case 'completed':
+                    return tasks.filter(task => task.isCompleted);
+                case 'active':
+                    return tasks.filter(task => !task.isCompleted);
+                default:
+                    return tasks;
+            }
+        }
+    
+        setFilteredTasks(filterTasks(selectedDay.tasks, filters));
+    }, [filters, selectedDay.tasks]);
+
     return (
-        <Droppable droppableId={String(uuid())}>
-            {provided => (
-                <>
-                    <ul {...provided.droppableProps} ref={provided.innerRef} className="todo-list">
+        // <Droppable droppableId={String(uuid())}>
+        //     {provided => (
+                <div className="todo-list-wrap">
+                    <ul /*{...provided.droppableProps} ref={provided.innerRef}*/ className="todo-list">
                         {/* <TransitionGroup> */}
-                            {tasksList.map((taskList, index) => (
+                            {filteredTasks.map((taskList, index) => (
                                 // <CSSTransition
                                 //     key={uuid()}
                                 //     timeout={{enter: 300, exit: 50}}
@@ -34,18 +54,36 @@ const TodoList = (props) => {
                                 // </CSSTransition>
                             ))}
                         {/* </TransitionGroup> */}
-                        {provided.placeholder}
+                        {/* {provided.placeholder} */}
                     </ul>
                     {/* <TransitionGroup>
                         <CSSTransition timeout={300} classNames="item"> */}
-                            <span className={tasksList.length === 0 ? "empty" : "empty hide"} > {tasksList.length === 0 && activeFilter === "completed" ? "No completed tasks" : tasksList.length === 0 && "No active tasks"} </span>
+                            <span className={filteredTasks.length === 0 ? "empty" : "empty hide"} > 
+                                {filteredTasks.length === 0 && filters === "completed" ? "Нет завершенных задач" : filteredTasks.length === 0 && "Нет активных задач"} 
+                            </span>
                         {/* </CSSTransition>
                     </TransitionGroup> */}
-                </>
-            )}
-        </Droppable>
+                </div>
+        //     )}
+        // </Droppable>
     );
 }
+
+const mapStateToProps = state => {
+    const { selectedDay } = state.tasks;
+    const { filters } = state;
+    return {
+        selectedDay,
+        filters,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        removeTask: (id, selectedId) => dispatch(removeTaskAction(id, selectedId)),
+        completeTask: id => dispatch(completeTaskAction(id)),
+    }
+};
 
 TodoList.defaultProps = {
     tasksList: [],
@@ -53,4 +91,4 @@ TodoList.defaultProps = {
     completeTask: () => {},
 }
 
-export default TodoList;
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
