@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 
 import Todo from '../Todo/Todo';
-import { removeTaskAction, completeTaskAction} from '../../actions/actionCreator';
+import { removeTaskAction, completeTaskAction, selectTaskAction } from '../../actions/actionCreator';
 
 import './TodoList.scss';
 
 const TodoList = (props) => {
-    const {removeTask, completeTask, selectedId, selectedDay, filters} = props;
+    const {removeTask, completeTask, selectedId, selectedDay, filters, selectedTask} = props;
 
     const [filteredTasks, setFilteredTasks] = useState([]);
 
@@ -49,6 +49,7 @@ const TodoList = (props) => {
                                         key={uuid()}
                                         title={taskList.title}
                                         index={index}
+                                        selectedTask={selectedTask}
                                         isCompleted={taskList.isCompleted}
                                     />
                                 // </CSSTransition>
@@ -81,7 +82,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         removeTask: (id, selectedId) => dispatch(removeTaskAction(id, selectedId)),
-        completeTask: id => dispatch(completeTaskAction(id)),
+        completeTask: (id, selectedId) => dispatch(completeTaskAction(id, selectedId)),
+        selectedTask: (id) => dispatch(selectTaskAction(id)),
     }
 };
 

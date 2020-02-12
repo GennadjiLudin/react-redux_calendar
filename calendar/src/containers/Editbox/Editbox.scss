@@ -1,3 +1,20 @@
 .editbox {
+    text-align: center;
+    &__task {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
 
+        &__name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        &__title, &__description {
+            width: 100%;
+            padding: .2rem;
+        }
+    }
 }
