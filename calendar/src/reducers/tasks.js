@@ -86,10 +86,10 @@ const tasks = (state = initialState, action) => {
                 selectedTask: newDays[payload.id].tasks[0],
             };
         case SELECT_TASK:
-            let newSelectTasks = {...state.selectedDay.tasks};
+            let newSelectTasks = [...state.selectedDay.tasks].find(task => task.id === payload.taskId);
             return {
                 ...state,
-                selectedTask: newSelectTasks[payload.taskId],
+                selectedTask: newSelectTasks,
             }
 
         // case ADD_TASK:
@@ -135,25 +135,31 @@ const tasks = (state = initialState, action) => {
                 },
             };
         case CHANGE_TASK:
-            let newStateTasksChange = {
+            let newChangeTask = {
+                ...state.selectedTask,
+                title: payload.title,
+                description: payload.description,
+            }
+
+            let newSelectedDayTasks = {
                 ...state.selectedDay,
                 tasks: state.selectedDay.tasks.map(task => {
-                        let newTaskChange = {...task};
-                        if(newTaskChange.id === payload.taskId) {
-                            newTaskChange.title = payload.title;
-                            newTaskChange.description = payload.description;
-                        }
-                        return newTaskChange;
-                    })
-                };
+                    let newChangeTaskDay = {...task};
+                    if(newChangeTaskDay.id === payload.taskId) {
+                        newChangeTaskDay = newChangeTask;
+                    }
+                    return newChangeTaskDay;
+                })
+            }
+            console.log(newChangeTask);
             return {
                 ...state,
-                selectedDay: newStateTasksChange,
+                selectedDay: newSelectedDayTasks,
                 allDays: {
                     ...state.allDays,
-                    [payload.selectedId]: newStateTasksChange,
+                    [payload.selectedId]: newSelectedDayTasks,
                 },
-                selectedTask: newStateTasksChange[payload.taskId]
+                selectedTask: newChangeTask,
             };
         // case DRAG_HAPPENED:
         //         let newState = [...state.selectedDay.tasks];
