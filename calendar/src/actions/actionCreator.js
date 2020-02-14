@@ -7,16 +7,26 @@ export const CHANGE_TASK = 'CHANGE_TASK';
 export const DRAG_HAPPENED = 'DRAG_HAPPENED';
 export const SELECT_DAY = 'SELECT_DAY';
 export const SELECT_TASK = 'SELECT_TASK';
+export const CHANGE_ADD_MODE = 'CHANGE_ADD_MODE';
 
 
-export const addTaskAction = (id, text, isCompleted) => ({
+export const addTaskAction = (taskId, selectedId, title, description, isCompleted) => ({
     type: ADD_TASK,
     payload: {
-        id,
-        text,
+        taskId,
+        selectedId,
+        title,
+        description,
         isCompleted,
     }
 });
+
+export const changeIsAddModeAction = (isAddMode) => ({
+    type: CHANGE_ADD_MODE,
+    payload: {
+        isAddMode,
+    }
+})
 
 export const selectDayAction = id => ({
     type: SELECT_DAY,

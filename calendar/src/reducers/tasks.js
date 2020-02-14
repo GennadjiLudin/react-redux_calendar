@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED, SELECT_DAY, SELECT_TASK } from '../actions/actionCreator';
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED, SELECT_DAY, SELECT_TASK, CHANGE_ADD_MODE } from '../actions/actionCreator';
 
 const initialState = {
     allDays: {
@@ -66,6 +66,7 @@ const initialState = {
     },
     selectedDay: null,
     selectedTask: null,
+    isAddMode: false,
 }
 
 const tasks = (state = initialState, action) => {
@@ -91,16 +92,41 @@ const tasks = (state = initialState, action) => {
                 ...state,
                 selectedTask: newSelectTasks,
             }
+        case CHANGE_ADD_MODE:
+            return {
+                ...state,
+                isAddMode: !payload.isAddMode,
+            }
+        case ADD_TASK:
+            let newAddTask = {
+                ...state,
+                selectedTask: {
+                    id: payload.taskId,
+                    title: payload.title,
+                    description: payload.description,
+                    isCompleted: payload.isCompleted,
+                }
+            }
 
-        // case ADD_TASK:
-        //     return {
-        //         ...state, 
-        //         tasks: {
-        //             id: payload.id,
-        //             text: payload.text,
-        //             isCompleted: payload.isCompleted,
-        //         }
-        //     };
+            let newAddTaskInSelectedDay = {
+                ...state,
+                selectedDay: {
+                    ...state.selectedDay,
+                    tasks: [
+                        ...state.selectedDay.tasks,
+                        newAddTask,
+                    ]
+                },
+            }
+            return {
+                ...state, 
+                selectedTask: newAddTask,
+                selectedDay: newAddTaskInSelectedDay,
+                allDays: {
+                    ...state.allDays,
+                    [payload.selectedId]: newAddTaskInSelectedDay,
+                },
+            };
         case REMOVE_TASK:
             let newSelectedDay = {
                 ...state.selectedDay,
@@ -151,7 +177,6 @@ const tasks = (state = initialState, action) => {
                     return newChangeTaskDay;
                 })
             }
-            console.log(newChangeTask);
             return {
                 ...state,
                 selectedDay: newSelectedDayTasks,

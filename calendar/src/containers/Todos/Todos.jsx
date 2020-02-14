@@ -4,27 +4,13 @@ import { DragDropContext } from 'react-beautiful-dnd';
 
 import TodoList from '../../components/TodoList/TodoList';
 import FilterTodo from '../../components/FilterTodo/FilterTodo';
-import { addTaskAction, sortTasksAction } from '../../actions/actionCreator';
+import { sortTasksAction, changeIsAddModeAction } from '../../actions/actionCreator';
 
 import './Todos.scss';
 
 
 const Todos = (props) => {
-    const { selectedDay, addTask, sortTasks } = props;
-
-    // const addTask = ({key}) => {
-    //     const {taskText} = this.state;
-
-    //     if(taskText.trim() !== '' && key === 'Enter') {
-    //         const { addTask } = this.props;
-
-    //         addTask((new Date()).getTime(), taskText, false);
-
-    //         this.setState({
-    //             taskText: '',
-    //         });
-    //     }
-    // }
+    const { selectedDay, sortTasks, changeIsAdd, isAddMode } = props;
     
     // const onDragEnd = ({destination, source, draggableId}) => {
     //     if(!destination) {
@@ -46,7 +32,7 @@ const Todos = (props) => {
                     selectedDay.tasks.length === 0 ? (
                         <>
                             <span>В настояще время нет активных задач!</span>
-                            <button>Добавить задачу</button>
+                            <button onClick={() => changeIsAdd(isAddMode)}>Добавить задачу</button>
                         </>
                     ) : (
                         <>
@@ -63,16 +49,17 @@ const Todos = (props) => {
 }
 
 const mapStateToProps = state => {
-    const { selectedDay } = state.tasks;
+    const { selectedDay, isAddMode } = state.tasks;
     return {
         selectedDay,
+        isAddMode
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        addTask: (id, text, isCompleted) => dispatch(addTaskAction(id, text, isCompleted)),
         sortTasks: (droppableIndexStart, droppableIndexEnd, draggableId) => dispatch(sortTasksAction(droppableIndexStart, droppableIndexEnd, draggableId)),
+        changeIsAdd: (isAddMode) => dispatch(changeIsAddModeAction(isAddMode)),
     }
 };
 

@@ -7,7 +7,7 @@ const EditModeTask = (props) => {
     const [title, setTitle] = useState(selectedTask.title);
     const [description, setDescription] = useState(selectedTask.description);
 
-    const handleClick = (e) => {
+    const handleClick = () => {
         setEditMode(!editMode);
         changeTask(selectedTask.id, selectedDay.id, title, description);
     }
