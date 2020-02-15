@@ -1,5 +1,5 @@
 import React from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+// import { Draggable } from 'react-beautiful-dnd';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,7 @@ import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import './Todo.scss';
 
 const Todo = (props) => {
-    const {title, isCompleted, removeTask, id, completeTask, index, selectedId, selectedTask} = props;
+    const {title, isCompleted, removeTask, id, completeTask, selectedId, selectedTask} = props;
 
     return (
         // <Draggable draggableId={String(id)} index={index}>

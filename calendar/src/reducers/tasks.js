@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED, SELECT_DAY, SELECT_TASK, CHANGE_ADD_MODE } from '../actions/actionCreator';
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, /*DRAG_HAPPENED,*/ SELECT_DAY, SELECT_TASK, CHANGE_ADD_MODE } from '../actions/actionCreator';
 
 const initialState = {
     allDays: {
@@ -99,24 +99,18 @@ const tasks = (state = initialState, action) => {
             }
         case ADD_TASK:
             let newAddTask = {
-                ...state,
-                selectedTask: {
-                    id: payload.taskId,
-                    title: payload.title,
-                    description: payload.description,
-                    isCompleted: payload.isCompleted,
-                }
+                id: payload.taskId,
+                title: payload.title,
+                description: payload.description,
+                isCompleted: payload.isCompleted,
             }
 
             let newAddTaskInSelectedDay = {
-                ...state,
-                selectedDay: {
-                    ...state.selectedDay,
-                    tasks: [
-                        ...state.selectedDay.tasks,
-                        newAddTask,
-                    ]
-                },
+                ...state.selectedDay,
+                tasks: [
+                    ...state.selectedDay.tasks,
+                    newAddTask,
+                ]
             }
             return {
                 ...state, 
@@ -132,13 +126,13 @@ const tasks = (state = initialState, action) => {
                 ...state.selectedDay,
                 tasks: state.selectedDay.tasks.filter(task => task.id !== payload.taskId)
             };
-            
+            console.log(state.selectedDay.id);
             return {
                 ...state,
                 selectedDay: newSelectedDay,
                 allDays: {
                     ...state.allDays,
-                    [payload.selectedId]: newSelectedDay,
+                    [state.selectedDay.id]: newSelectedDay,
                 },
             };
         case COMPLETE_TASK:

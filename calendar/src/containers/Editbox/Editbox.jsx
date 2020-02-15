@@ -12,13 +12,12 @@ const Editbox = (props) => {
     const { changeTask, selectedDay, selectedTask, isAddMode, changeIsAdd, addTask } = props;
     const [editMode, setEditMode] = useState(false);
 
-    console.log(selectedDay);
     return (
         <div className="editbox">
             {selectedDay && 
                 <div className="editbox__task">
                     {isAddMode ? (
-                        <AddMode changeIsAdd={changeIsAdd} isAddMode={isAddMode} addTask={addTask} />
+                        <AddMode changeIsAdd={changeIsAdd} isAddMode={isAddMode} addTask={addTask} selectedDay={selectedDay} />
                         ) : (
                             selectedTask ? (
                                 !editMode ? (

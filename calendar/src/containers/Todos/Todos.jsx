@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { DragDropContext } from 'react-beautiful-dnd';
+// import { DragDropContext } from 'react-beautiful-dnd';
 
 import TodoList from '../../components/TodoList/TodoList';
 import FilterTodo from '../../components/FilterTodo/FilterTodo';
@@ -10,7 +10,7 @@ import './Todos.scss';
 
 
 const Todos = (props) => {
-    const { selectedDay, sortTasks, changeIsAdd, isAddMode } = props;
+    const { selectedDay, /*sortTasks,*/ changeIsAdd, isAddMode } = props;
     
     // const onDragEnd = ({destination, source, draggableId}) => {
     //     if(!destination) {
@@ -25,7 +25,7 @@ const Todos = (props) => {
     // }
 
     return (
-        <DragDropContext /*onDragEnd={onDragEnd}*/>
+        // <DragDropContext /*onDragEnd={onDragEnd}*/>
             <div className="todos">
                 <div className="title">Список задач</div>
                 {selectedDay && (
@@ -44,7 +44,7 @@ const Todos = (props) => {
                     )
                 )}
             </div>
-        </DragDropContext>
+        // </DragDropContext>
     )
 }
 

@@ -8,6 +8,7 @@ const AddMode = (props) => {
     const [addTitle, setAddTitle] = useState("");
     const [addDescription, setAddDescription] = useState("");
 
+    console.log(selectedDay.id);
     const handleClick = (e) => {
         changeIsAdd(isAddMode);
         addTask(uuid(), selectedDay.id, addTitle, addDescription, false)

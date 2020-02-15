@@ -10,8 +10,8 @@ import './Dates.scss';
 const Dates = (props) => {
     const { datesArr, arrPrev, arrNext, month, year, selectDay, allDays } = props;
 
-    const onClickDateHandler = e => {
-        selectDay(e.target.id);
+    const onClickDateHandler = id => {
+        selectDay(id);
     }
 
     const isCurrentDay = (day) => {
@@ -51,7 +51,7 @@ const Dates = (props) => {
                 <Day
                     key={getDateId(date, 'prev')}
                     date={date}
-                    getDateId={getDateId(date, 'prev')}
+                    id={getDateId(date, 'prev')}
                     onClickDateHandler={onClickDateHandler}
                     rightClassName={rightClassName(date, 'prev')}
                     allDays={allDays}
@@ -61,7 +61,7 @@ const Dates = (props) => {
                 <Day 
                     key={getDateId(date, '')}
                     date={date}
-                    getDateId={getDateId(date, '')}
+                    id={getDateId(date, '')}
                     onClickDateHandler={onClickDateHandler}
                     rightClassName={rightClassName(date, '')}
                     allDays={allDays}
@@ -71,7 +71,7 @@ const Dates = (props) => {
                 <Day
                     key={getDateId(date, 'next')}
                     date={date}
-                    getDateId={getDateId(date, 'next')}
+                    id={getDateId(date, 'next')}
                     onClickDateHandler={onClickDateHandler}
                     rightClassName={rightClassName(date, 'next')}
                     allDays={allDays}

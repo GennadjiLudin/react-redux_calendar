@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { Droppable } from "react-beautiful-dnd";
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';
+// import { Droppable } from "react-beautiful-dnd";
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 
@@ -35,7 +35,7 @@ const TodoList = (props) => {
                 <div className="todo-list-wrap">
                     <ul /*{...provided.droppableProps} ref={provided.innerRef}*/ className="todo-list">
                         {/* <TransitionGroup> */}
-                            {filteredTasks.map((taskList, index) => (
+                            {filteredTasks.map((taskList) => (
                                 // <CSSTransition
                                 //     key={uuid()}
                                 //     timeout={{enter: 300, exit: 50}}
@@ -48,7 +48,7 @@ const TodoList = (props) => {
                                         selectedId={selectedId}
                                         key={uuid()}
                                         title={taskList.title}
-                                        index={index}
+                                        index={taskList.id}
                                         selectedTask={selectedTask}
                                         isCompleted={taskList.isCompleted}
                                     />
