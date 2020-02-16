@@ -47,9 +47,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeTask: (id, selectedId, title, description) => dispatch(changeTaskAction(id, selectedId, title, description)),
+        changeTask: (id, title, description) => dispatch(changeTaskAction(id, title, description)),
         changeIsAdd: (isAddMode) => dispatch(changeIsAddModeAction(isAddMode)),
-        addTask: (taskId, selectedId, title, description, isCompleted) => dispatch(addTaskAction(taskId, selectedId, title, description, isCompleted)),
+        addTask: (taskId, title, description, isCompleted) => dispatch(addTaskAction(taskId, title, description, isCompleted)),
     }
 };
 

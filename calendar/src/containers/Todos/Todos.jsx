@@ -36,9 +36,7 @@ const Todos = (props) => {
                         </>
                     ) : (
                         <>
-                            <TodoList 
-                                selectedId={selectedDay.id} 
-                            />
+                            <TodoList />
                             <FilterTodo />
                         </>
                     )

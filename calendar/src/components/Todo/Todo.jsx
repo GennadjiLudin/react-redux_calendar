@@ -8,14 +8,14 @@ import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import './Todo.scss';
 
 const Todo = (props) => {
-    const {title, isCompleted, removeTask, id, completeTask, selectedId, selectedTask} = props;
+    const {title, isCompleted, removeTask, id, completeTask, selectedTask} = props;
 
     return (
         // <Draggable draggableId={String(id)} index={index}>
         //     {provided => (
                 <li /*{...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}*/ className="todo-item">
                     <FontAwesomeIcon 
-                        onClick={() => completeTask(id, selectedId)}
+                        onClick={() => completeTask(id)}
                         icon={isCompleted ? faCheck : faCircle}
                         className={isCompleted ? "mark-complete" : "mark"}
                     />
@@ -26,7 +26,7 @@ const Todo = (props) => {
                             {title}
                         </span>
                     <FontAwesomeIcon
-                        onClick={() => removeTask(id, selectedId)}
+                        onClick={() => removeTask(id)}
                         icon={faTimes}
                         className="delete"
                     />

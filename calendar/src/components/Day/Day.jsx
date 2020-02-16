@@ -12,7 +12,7 @@ const Day = (props) => {
             onClickDateHandler(id);
         }
     }, [])
-
+    
     return (
         <div 
             className="date"

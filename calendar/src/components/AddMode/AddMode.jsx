@@ -4,14 +4,13 @@ import uuid from 'react-uuid';
 import './AddMode.scss';
 
 const AddMode = (props) => {
-    const { selectedDay, changeIsAdd, isAddMode, addTask } = props;
+    const { changeIsAdd, isAddMode, addTask } = props;
     const [addTitle, setAddTitle] = useState("");
     const [addDescription, setAddDescription] = useState("");
 
-    console.log(selectedDay.id);
-    const handleClick = (e) => {
+    const handleClick = () => {
         changeIsAdd(isAddMode);
-        addTask(uuid(), selectedDay.id, addTitle, addDescription, false)
+        addTask(uuid(), addTitle, addDescription, false)
     }
 
     return (

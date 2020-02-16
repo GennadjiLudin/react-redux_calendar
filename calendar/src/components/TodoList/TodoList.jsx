@@ -10,7 +10,7 @@ import { removeTaskAction, completeTaskAction, selectTaskAction } from '../../ac
 import './TodoList.scss';
 
 const TodoList = (props) => {
-    const {removeTask, completeTask, selectedId, selectedDay, filters, selectedTask} = props;
+    const {removeTask, completeTask, selectedDay, filters, selectedTask} = props;
 
     const [filteredTasks, setFilteredTasks] = useState([]);
 
@@ -45,7 +45,6 @@ const TodoList = (props) => {
                                         completeTask={completeTask}
                                         removeTask={removeTask}
                                         id={taskList.id}
-                                        selectedId={selectedId}
                                         key={uuid()}
                                         title={taskList.title}
                                         index={taskList.id}
@@ -81,8 +80,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeTask: (id, selectedId) => dispatch(removeTaskAction(id, selectedId)),
-        completeTask: (id, selectedId) => dispatch(completeTaskAction(id, selectedId)),
+        removeTask: (id) => dispatch(removeTaskAction(id)),
+        completeTask: (id) => dispatch(completeTaskAction(id)),
         selectedTask: (id) => dispatch(selectTaskAction(id)),
     }
 };

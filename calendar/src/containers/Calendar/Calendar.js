@@ -13,6 +13,7 @@ import {
 
 import WeekDays from '../../components/WeekDays/WeekDays';
 import Dates from '../../components/Dates/Dates';
+import { getAllDaysAction } from '../../actions/actionCreator';
 
 import './Calendar.scss';
 
@@ -20,7 +21,7 @@ const maxDays = 42;
 
 
 function Calendar(props) {
-    const { month, year } = props;
+    const { month, year, getAllDays } = props;
     const [datesArr, setDatesArr] = useState([]);
     const [arrPrev, setArrPrev] = useState([]);
     const [arrNext, setArrNext] = useState([]);
@@ -49,6 +50,10 @@ function Calendar(props) {
         }
     }, [month, year])
 
+    useEffect(() => {
+        getAllDays();
+    }, [])
+
     return (
         <div className="calendar">
             <WeekDays />
@@ -63,9 +68,15 @@ const mapStateToProps = state => {
         month,
         year,
     };
-  };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getAllDays: () => dispatch(getAllDaysAction()),
+    }
+};
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps,
 )(Calendar);

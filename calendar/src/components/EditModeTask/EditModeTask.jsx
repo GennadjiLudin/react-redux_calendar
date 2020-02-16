@@ -9,7 +9,7 @@ const EditModeTask = (props) => {
 
     const handleClick = () => {
         setEditMode(!editMode);
-        changeTask(selectedTask.id, selectedDay.id, title, description);
+        changeTask(selectedTask.id, title, description);
     }
 
     return (

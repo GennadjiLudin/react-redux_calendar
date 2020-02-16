@@ -1,77 +1,25 @@
-import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, /*DRAG_HAPPENED,*/ SELECT_DAY, SELECT_TASK, CHANGE_ADD_MODE } from '../actions/actionCreator';
+import { ADD_TASK, GET_ALL_DAYS, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, /*DRAG_HAPPENED,*/ SELECT_DAY, SELECT_TASK, CHANGE_ADD_MODE } from '../actions/actionCreator';
 
-const initialState = {
-    allDays: {
-        20200105: {
-            id: 20200105,
-            tasks: [
-                {
-                    id: 1,
-                    title: "Задача 1",
-                    description: "То что нужно, чтобы выполнить задачу 1",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-                {
-                    id: 2,
-                    title: "Задача 2",
-                    description: "То что нужно, чтобы выполнить задачу 2",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-                {
-                    id: 3,
-                    title: "Задача 3",
-                    description: "То что нужно, чтобы выполнить задачу 3",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-                {
-                    id: 4,
-                    title: "Задача 4",
-                    description: "То что нужно, чтобы выполнить задачу 4",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-                {
-                    id: 5,
-                    title: "Задача 5",
-                    description: "То что нужно, чтобы выполнить задачу 5",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-                {
-                    id: 6,
-                    title: "Задача 6",
-                    description: "То что нужно, чтобы выполнить задачу 6",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-                {
-                    id: 7,
-                    title: "Задача 7",
-                    description: "То что нужно, чтобы выполнить задачу 7",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-                {
-                    id: 8,
-                    title: "Задача 8",
-                    description: "То что нужно, чтобы выполнить задачу 8",
-                    time: "14:30",
-                    isCompleted: false,
-                },
-            ],
-        },
-    },
+const TASKS = {
+    allDays: {},
     selectedDay: null,
     selectedTask: null,
     isAddMode: false,
-}
+};
 
-const tasks = (state = initialState, action) => {
+
+
+const tasks = (state = TASKS, action) => {
     const { type, payload } = action;
+    const setLocalStorage = newAllDays =>  localStorage.setItem("allDays", JSON.stringify(newAllDays));
+    let newAllDaysObj;
+
     switch(type) {
+        case GET_ALL_DAYS:
+            return {
+                ...state,
+                allDays: payload.allDays ? payload.allDays : state.allDays,
+            }
         case SELECT_DAY:
             let newDays = {...state.allDays};
             if (!newDays[payload.id]) {
@@ -112,28 +60,35 @@ const tasks = (state = initialState, action) => {
                     newAddTask,
                 ]
             }
+
+            newAllDaysObj =  {
+                ...state.allDays,
+                [state.selectedDay.id]: newAddTaskInSelectedDay,
+            }
+
+            setLocalStorage(newAllDaysObj);
             return {
                 ...state, 
                 selectedTask: newAddTask,
                 selectedDay: newAddTaskInSelectedDay,
-                allDays: {
-                    ...state.allDays,
-                    [payload.selectedId]: newAddTaskInSelectedDay,
-                },
+                allDays: newAllDaysObj,
             };
         case REMOVE_TASK:
             let newSelectedDay = {
                 ...state.selectedDay,
                 tasks: state.selectedDay.tasks.filter(task => task.id !== payload.taskId)
             };
-            console.log(state.selectedDay.id);
+            
+            newAllDaysObj =  {
+                ...state.allDays,
+                [state.selectedDay.id]: newSelectedDay,
+            }
+
+            setLocalStorage(newAllDaysObj);
             return {
                 ...state,
                 selectedDay: newSelectedDay,
-                allDays: {
-                    ...state.allDays,
-                    [state.selectedDay.id]: newSelectedDay,
-                },
+                allDays: newAllDaysObj,
             };
         case COMPLETE_TASK:
             let newStateTasks = {
@@ -146,13 +101,17 @@ const tasks = (state = initialState, action) => {
                         return newTask;
                     })
                 };
+
+            newAllDaysObj =  {
+                ...state.allDays,
+                [state.selectedDay.id]: newStateTasks,
+            }
+
+            setLocalStorage(newAllDaysObj);
             return {
                 ...state,
                 selectedDay: newStateTasks,
-                allDays: {
-                    ...state.allDays,
-                    [payload.selectedId]: newStateTasks,
-                },
+                allDays: newAllDaysObj,
             };
         case CHANGE_TASK:
             let newChangeTask = {
@@ -171,13 +130,17 @@ const tasks = (state = initialState, action) => {
                     return newChangeTaskDay;
                 })
             }
+
+            newAllDaysObj =  {
+                ...state.allDays,
+                [state.selectedDay.id]: newSelectedDayTasks,
+            }
+
+            setLocalStorage(newAllDaysObj);
             return {
                 ...state,
                 selectedDay: newSelectedDayTasks,
-                allDays: {
-                    ...state.allDays,
-                    [payload.selectedId]: newSelectedDayTasks,
-                },
+                allDays: newAllDaysObj,
                 selectedTask: newChangeTask,
             };
         // case DRAG_HAPPENED:

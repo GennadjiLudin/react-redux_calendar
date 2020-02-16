@@ -8,13 +8,24 @@ export const DRAG_HAPPENED = 'DRAG_HAPPENED';
 export const SELECT_DAY = 'SELECT_DAY';
 export const SELECT_TASK = 'SELECT_TASK';
 export const CHANGE_ADD_MODE = 'CHANGE_ADD_MODE';
+export const GET_ALL_DAYS = 'GET_ALL_DAYS';
 
+export const getAllDaysAction = () => {
+    let allDays = localStorage.getItem('allDays');
+    return dispatch => {
+        dispatch({
+            type: GET_ALL_DAYS,
+            payload: {
+                allDays: JSON.parse(allDays),
+            }
+        })
+    }
+}
 
-export const addTaskAction = (taskId, selectedId, title, description, isCompleted) => ({
+export const addTaskAction = (taskId, title, description, isCompleted) => ({
     type: ADD_TASK,
     payload: {
         taskId,
-        selectedId,
         title,
         description,
         isCompleted,
@@ -42,19 +53,17 @@ export const selectTaskAction = taskId => ({
     }
 })
 
-export const removeTaskAction = (taskId, selectedId) => ({
+export const removeTaskAction = (taskId) => ({
     type: REMOVE_TASK,
     payload: {
         taskId,
-        selectedId,
     }
 })
 
-export const completeTaskAction = (taskId, selectedId) => ({
+export const completeTaskAction = (taskId) => ({
     type: COMPLETE_TASK,
     payload: {
         taskId,
-        selectedId,
     }
 })
 
@@ -65,11 +74,10 @@ export const changeFilterAction = activeFilter => ({
     }
 })
 
-export const changeTaskAction = (taskId, selectedId, title, description) => ({
+export const changeTaskAction = (taskId, title, description) => ({
     type: CHANGE_TASK,
     payload: {
         taskId,
-        selectedId,
         title,
         description,
     }
