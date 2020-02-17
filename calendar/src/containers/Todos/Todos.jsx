@@ -6,6 +6,9 @@ import TodoList from '../../components/TodoList/TodoList';
 import FilterTodo from '../../components/FilterTodo/FilterTodo';
 import { sortTasksAction, changeIsAddModeAction } from '../../actions/actionCreator';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import './Todos.scss';
 
 
@@ -32,7 +35,6 @@ const Todos = (props) => {
                     selectedDay.tasks.length === 0 ? (
                         <>
                             <span>В настояще время нет активных задач!</span>
-                            <button onClick={() => changeIsAdd(isAddMode)}>Добавить задачу</button>
                         </>
                     ) : (
                         <>
@@ -41,6 +43,11 @@ const Todos = (props) => {
                         </>
                     )
                 )}
+                <FontAwesomeIcon
+                    className="todos-add-btn"
+                    onClick={() => changeIsAdd(isAddMode)}
+                    icon={faPlus}
+                />
             </div>
         // </DragDropContext>
     )

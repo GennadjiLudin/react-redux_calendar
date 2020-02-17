@@ -2,12 +2,27 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     height: 100%;
+    position: relative;
 }
 
 .title {
     font-size: 1.2rem;
     line-height: 1.5;
     font-weight: bold;
+    margin-left: 30%;
+}
+
+.todos-add-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 2rem;
+    color: #7EB12C;
+    cursor: pointer;
+    
+    &:active {
+        transform: scale(0.9);
+    }
 }

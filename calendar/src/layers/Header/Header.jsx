@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { getMonthName } from '../../helpers/helpers';
 import { changeMonth, changeYear } from '../../actions/actionHeader';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
+
 import './Header.scss';
 
 const Header = (props) => {
@@ -24,12 +27,20 @@ const Header = (props) => {
         <div className="header">
             <span className="header__logo">CALENDAR</span>
             <span className="header__info">
-                <button onClick={() => onClickHandlerPrev()} className="prev-btn" >Prev</button>
+                <FontAwesomeIcon
+                    className="prev-btn"
+                    onClick={() => onClickHandlerPrev()}
+                    icon={faChevronCircleLeft}
+                />
                 <span className="header__month-year-wrap">
                         <span className="header__month">{getMonthName(month)}</span>
                         <span className="header__year">{year}</span>
                 </span>
-                <button onClick={() => onClickHandlerNext()} className="next-btn" >Next</button>
+                <FontAwesomeIcon
+                    className="next-btn"
+                    onClick={() => onClickHandlerNext()}
+                    icon={faChevronCircleRight}
+                />
             </span>
         </div>
     )

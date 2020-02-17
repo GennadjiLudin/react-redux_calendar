@@ -19,12 +19,29 @@
 
         .prev-btn {
             margin-right: 3rem;
+            font-size: 2rem;
+            cursor: pointer;
+
+            &:active {
+                transform: scale(0.9);
+            }
         }
 
+        .next-btn {
+            font-size: 2rem;
+            cursor: pointer;
+
+            &:active {
+                transform: scale(0.9);
+            }
+        }
     }
 
     &__month-year-wrap {
+        text-align: center;
         margin-right: 3rem;
+        width: 10rem;
+        font-weight: bold;
     }
 
     &__month {

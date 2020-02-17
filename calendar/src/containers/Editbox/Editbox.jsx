@@ -17,13 +17,13 @@ const Editbox = (props) => {
             {selectedDay && 
                 <div className="editbox__task">
                     {isAddMode ? (
-                        <AddMode changeIsAdd={changeIsAdd} isAddMode={isAddMode} addTask={addTask} selectedDay={selectedDay} />
+                        <AddMode changeIsAdd={changeIsAdd} isAddMode={isAddMode} addTask={addTask} />
                         ) : (
                             selectedTask ? (
                                 !editMode ? (
                                         <ReadOnlyTask selectedTask={selectedTask} setEditMode={setEditMode} editMode={editMode} />
                                     ) : (
-                                        <EditModeTask selectedDay={selectedDay} selectedTask={selectedTask} setEditMode={setEditMode} editMode={editMode} changeTask={changeTask} />
+                                        <EditModeTask selectedTask={selectedTask} setEditMode={setEditMode} editMode={editMode} changeTask={changeTask} />
                                     )
                             ) : (
                                 <div>Выберете задачу</div>

@@ -11,7 +11,12 @@
     .mark {
         margin-right: 1rem;
         color: #24577B;
+        opacity: .4;
         cursor: pointer;
+
+        &:active {
+            transform: scale(0.9);
+        }
         
         &-complete {
             display: block;
@@ -20,6 +25,10 @@
             border: none;
             cursor: pointer;
             opacity: .3;
+
+            &:active {
+                transform: scale(0.9);
+            }
         }
     }
 
@@ -28,6 +37,10 @@
         margin-left: auto;
         color: #ff3100;
         cursor: pointer;
+
+        &:active {
+            transform: scale(0.9);
+        }
     }
 
     .completed {
@@ -35,7 +48,7 @@
         opacity: .3;
     }
 
-    &:hover .delete, &:hover .mark-complete, &:hover .completed {
+    &:hover .delete, &:hover .mark-complete, &:hover .completed, &:hover .mark {
         opacity: 1;
     }
 }

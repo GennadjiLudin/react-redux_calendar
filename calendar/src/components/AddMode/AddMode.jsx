@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
 
+import Form from '../Form/Form';
+
 import './AddMode.scss';
 
 const AddMode = (props) => {
@@ -12,16 +14,17 @@ const AddMode = (props) => {
         changeIsAdd(isAddMode);
         addTask(uuid(), addTitle, addDescription, false)
     }
-
+    
     return (
-        <>
-            <label htmlFor="title">Задача</label>
-            <input type="text" name="title" id="description" value={addTitle} onChange={(e) => setAddTitle(e.target.value)} />
-            <label htmlFor="description">Описание</label>
-            <textarea name="description" id="description" cols="30" rows="10" value={addDescription} onChange={(e) => setAddDescription(e.target.value)} />
-            <button onClick={() => handleClick()} >Save</button>
-            <button onClick={() => changeIsAdd(isAddMode)}>Cancel</button>
-        </>
+        <Form
+            changeMode={changeIsAdd}
+            argument={isAddMode}
+            title={addTitle}
+            description={addDescription}
+            setTitle={setAddTitle}
+            setDescription={setAddDescription}
+            handleClick={handleClick}
+        />
     )
 }
 

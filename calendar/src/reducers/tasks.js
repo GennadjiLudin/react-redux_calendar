@@ -78,7 +78,7 @@ const tasks = (state = TASKS, action) => {
                 ...state.selectedDay,
                 tasks: state.selectedDay.tasks.filter(task => task.id !== payload.taskId)
             };
-            
+
             newAllDaysObj =  {
                 ...state.allDays,
                 [state.selectedDay.id]: newSelectedDay,
@@ -89,6 +89,7 @@ const tasks = (state = TASKS, action) => {
                 ...state,
                 selectedDay: newSelectedDay,
                 allDays: newAllDaysObj,
+                selectedTask: payload.taskId === state.selectedTask.id ? null : state.selectedTask,
             };
         case COMPLETE_TASK:
             let newStateTasks = {

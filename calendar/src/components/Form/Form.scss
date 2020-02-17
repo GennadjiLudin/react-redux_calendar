@@ -1,0 +1,63 @@
+.form-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .form-add {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .form__name {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .form__title, .form__description {
+            width: 100%;
+            text-align: left;
+            font-size: 1.2rem;
+            border: .1rem solid black;
+            border-radius: .4rem;
+            padding: .2rem;
+        }
+
+        .form__description {
+            height: 47%;
+            resize: none;
+        }
+    }
+    
+    .button-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 2rem;
+    
+    
+        .save {
+            color: #7EB12C;
+            cursor: pointer;
+
+            &:active {
+                transform: scale(0.9);
+            }
+        }
+    
+        .cancel {
+            cursor: pointer;
+            color: #ff3100;
+
+            &:active {
+                transform: scale(0.9);
+            }
+        }
+    }
+}
