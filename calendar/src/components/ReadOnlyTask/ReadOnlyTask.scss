@@ -1,24 +1,37 @@
-.editbox__task-wrap {
+.editbox__wrap {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     width: 100%;
+}
+
+.editbox__task-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
     margin-bottom: 1rem;
+    position: relative;
 } 
 
 .editbox__task__name {
-    font-weight: bold;
     font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
 }
 
 .editbox__task__title, .editbox__task__description {
     width: 100%;
     font-size: 1.2rem;
-    // border: .1rem solid black;
-    // border-radius: .4rem;
     padding: .2rem;
+}
+
+.editbox__task__title {
+    margin-bottom: 1.2rem;
 }
 
 .editbox__task__description {
@@ -28,6 +41,12 @@
 .editbox__edit-btn {
     font-size: 2rem;
     cursor: pointer;
+    color: #f33;
+    transition: transform .4s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 
     &:active {
         transform: scale(0.9);

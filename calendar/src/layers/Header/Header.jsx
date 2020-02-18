@@ -5,7 +5,7 @@ import { getMonthName } from '../../helpers/helpers';
 import { changeMonth, changeYear } from '../../actions/actionHeader';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import './Header.scss';
 
@@ -25,12 +25,12 @@ const Header = (props) => {
 
     return (
         <div className="header">
-            <span className="header__logo">CALENDAR</span>
+            <span className="header__logo">КАЛЕНДАРЬ-ОРГАНАЙЗЕР</span>
             <span className="header__info">
                 <FontAwesomeIcon
                     className="prev-btn"
                     onClick={() => onClickHandlerPrev()}
-                    icon={faChevronCircleLeft}
+                    icon={faChevronLeft}
                 />
                 <span className="header__month-year-wrap">
                         <span className="header__month">{getMonthName(month)}</span>
@@ -39,7 +39,7 @@ const Header = (props) => {
                 <FontAwesomeIcon
                     className="next-btn"
                     onClick={() => onClickHandlerNext()}
-                    icon={faChevronCircleRight}
+                    icon={faChevronRight}
                 />
             </span>
         </div>
@@ -57,7 +57,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
       changeMonth: type => dispatch(changeMonth(type)),
-      changeYear: type => dispatch(changeYear(type))
+      changeYear: type => dispatch(changeYear(type)),
     }
 };
 

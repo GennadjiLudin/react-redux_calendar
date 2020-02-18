@@ -19,6 +19,8 @@ const Form = (props) => {
                     value={title} 
                     onChange={(e) => setTitle(e.target.value)}
                     className="form__title"
+                    maxLength="40"
+                    required
                 />
                 <label htmlFor="description" className="form__name">Описание</label>
                 <textarea 
@@ -29,6 +31,7 @@ const Form = (props) => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     className="form__description"
+                    maxLength="200"
                 />
             </form>
             <div className="button-wrap">
@@ -36,11 +39,13 @@ const Form = (props) => {
                     onClick={() => handleClick()}
                     icon={faCheck}
                     className="save"
+                    title="Сохранить"
                 />
                 <FontAwesomeIcon
                     onClick={() => changeMode(argument)}
                     icon={faTimes}
                     className="cancel"
+                    title="Отменить"
                 />
             </div>
         </div>

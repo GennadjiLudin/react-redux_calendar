@@ -8,12 +8,23 @@
     background-color: #fff;
     cursor: pointer;
 
+    .text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .mark {
         margin-right: 1rem;
         color: #24577B;
         opacity: .4;
         cursor: pointer;
+        transition: .4s;
 
+        &:hover {
+            transform: scale(1.1);
+        }
+    
         &:active {
             transform: scale(0.9);
         }
@@ -25,7 +36,12 @@
             border: none;
             cursor: pointer;
             opacity: .3;
+            transition: .4s;
 
+            &:hover {
+                transform: scale(1.1);
+            }
+        
             &:active {
                 transform: scale(0.9);
             }
@@ -35,9 +51,14 @@
     .delete {
         opacity: .3;
         margin-left: auto;
-        color: #ff3100;
+        color: #f33;
         cursor: pointer;
+        transition: .4s;
 
+        &:hover {
+            transform: scale(1.1);
+        }
+    
         &:active {
             transform: scale(0.9);
         }
@@ -46,9 +67,11 @@
     .completed {
         text-decoration: line-through;
         opacity: .3;
+        transition: .4s;
     }
 
     &:hover .delete, &:hover .mark-complete, &:hover .completed, &:hover .mark {
         opacity: 1;
+        transition: .4s;
     }
 }

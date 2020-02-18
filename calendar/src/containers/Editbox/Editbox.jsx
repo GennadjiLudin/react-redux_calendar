@@ -26,7 +26,7 @@ const Editbox = (props) => {
                                         <EditModeTask selectedTask={selectedTask} setEditMode={setEditMode} editMode={editMode} changeTask={changeTask} />
                                     )
                             ) : (
-                                <div>Выберете задачу</div>
+                                <div className="editbox-no-tasks">Выберете задачу</div>
                             )
                         )
                     }                   

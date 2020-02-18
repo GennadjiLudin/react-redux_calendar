@@ -22,6 +22,7 @@ const Todo = (props) => {
                         <span 
                             onClick={ () => selectedTask(id) }
                             className={isCompleted ? "completed text" : "text"}
+                            title={title}
                         >
                             {title}
                         </span>

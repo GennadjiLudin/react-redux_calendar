@@ -15,8 +15,8 @@
         margin-bottom: 1rem;
 
         .form__name {
-            font-weight: bold;
             font-size: 1.2rem;
+            line-height: 1.5;
         }
 
         .form__title, .form__description {
@@ -26,6 +26,12 @@
             border: .1rem solid black;
             border-radius: .4rem;
             padding: .2rem;
+        }
+
+        .form__title {
+            border: none;
+            border-radius: 0;
+            border-bottom: .1rem solid black;
         }
 
         .form__description {
@@ -45,7 +51,12 @@
         .save {
             color: #7EB12C;
             cursor: pointer;
+            transition: transform .4s;
 
+            &:hover {
+                transform: scale(1.1);
+            }
+        
             &:active {
                 transform: scale(0.9);
             }
@@ -53,8 +64,13 @@
     
         .cancel {
             cursor: pointer;
-            color: #ff3100;
+            color: #f33;
+            transition: transform .4s;
 
+            &:hover {
+                transform: scale(1.1);
+            }
+        
             &:active {
                 transform: scale(0.9);
             }

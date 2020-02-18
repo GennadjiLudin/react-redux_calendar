@@ -9,6 +9,10 @@
     justify-content: space-around;
     align-items: center;
     overflow: hidden;
+
+    &-selected {
+        background-color: aliceblue;
+    }
     
     &-num {
         position: absolute;
@@ -18,19 +22,19 @@
         text-align: center;
 
         &-current {
-            background-color: red;
+            background-color: #f33;
             color: #fff;
-            border-radius: 35%;
-            padding: .1rem .6rem .3rem .5rem;
+            border-radius: 50%;
+            padding: .2rem .4rem .2rem .3rem;
         }
 
         &-prev, &-next {
-            color: rgb(104, 102, 102);
+            color: darkgrey;
             font-weight: normal;
         }
     }
 }
 
 .date-wrap__tasks {
-    width: 80%;
+    width: 100%;
 }

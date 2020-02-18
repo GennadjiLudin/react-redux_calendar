@@ -11,8 +11,10 @@ const AddMode = (props) => {
     const [addDescription, setAddDescription] = useState("");
 
     const handleClick = () => {
-        changeIsAdd(isAddMode);
-        addTask(uuid(), addTitle, addDescription, false)
+        if (addTitle.trim() !== '') {
+            changeIsAdd(isAddMode);
+            addTask(uuid(), addTitle, addDescription, false)
+        }
     }
     
     return (

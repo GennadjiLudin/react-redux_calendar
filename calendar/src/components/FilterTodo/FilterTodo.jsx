@@ -34,10 +34,30 @@ const FilterTodo = (props) => {
         setCompletedCounter(getCompletedCounter(selectedDay.tasks));
     }, [selectedDay.tasks])
 
+    const checkCounter = (counter, text) => {
+        if (counter === 1) {
+            return `${counter} ${text}ая задача`;
+        } else if (counter >= 2 && counter <= 4) {
+            return `${counter} ${text}ыe задачи`;
+        } else {
+            return `${counter} ${text}ых задач`;
+        }
+    }
+
+    const checkAllCounter = (counter) => {
+        if (counter === 1) {
+            return `${counter} задача`;
+        } else if (counter >= 2 && counter <= 4) {
+            return `${counter} задачи`;
+        } else {
+            return `${counter} задач`;
+        }
+    }
+
     return (
         <div className="filter-todo">
             <span className="amount">
-                {filters === "completed" ? `${completedCounter} завершенных задач` : filters === "active" ? `${activeCounter} активных задач` : `Всего ${selectedDay.tasks.length} задач`} 
+                {filters === "completed" ? checkCounter(completedCounter, "завершенн") : filters === "active" ? checkCounter(activeCounter, "активн") : `Всего ${checkAllCounter(selectedDay.tasks.length)}`} 
             </span>
             <div className="btn-group">
                 {FILTERS_BTN.map(({text, id}) => (

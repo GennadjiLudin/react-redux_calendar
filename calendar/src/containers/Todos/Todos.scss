@@ -8,10 +8,12 @@
 }
 
 .title {
+    width: 100%;
     font-size: 1.2rem;
     line-height: 1.5;
     font-weight: bold;
-    margin-left: 30%;
+    text-align: center;
+    color: rgb(39, 37, 37);
 }
 
 .todos-add-btn {
@@ -21,8 +23,21 @@
     font-size: 2rem;
     color: #7EB12C;
     cursor: pointer;
-    
+    transition: transform .4s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
     &:active {
         transform: scale(0.9);
     }
+}
+
+.todos-no-tasks {
+    margin-bottom: 50%;
+    margin-left: 1rem;
+    color: #a3a3a3;
+    font-size: 1.2rem;
+    text-align: center;
 }

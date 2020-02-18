@@ -39,10 +39,13 @@ export const changeIsAddModeAction = (isAddMode) => ({
     }
 })
 
-export const selectDayAction = id => ({
+export const selectDayAction = (id, day, month, year) => ({
     type: SELECT_DAY,
     payload: {
         id,
+        day,
+        month,
+        year,
     }
 })
 

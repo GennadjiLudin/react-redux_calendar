@@ -30,23 +30,26 @@ const Todos = (props) => {
     return (
         // <DragDropContext /*onDragEnd={onDragEnd}*/>
             <div className="todos">
-                <div className="title">Список задач</div>
                 {selectedDay && (
-                    selectedDay.tasks.length === 0 ? (
-                        <>
-                            <span>В настояще время нет активных задач!</span>
-                        </>
-                    ) : (
-                        <>
-                            <TodoList />
-                            <FilterTodo />
-                        </>
-                    )
+                    <>
+                        <div className="title">Задачи на {selectedDay.dayTitle}</div>
+                        {selectedDay.tasks.length === 0 ? (
+                            <>
+                                <span className="todos-no-tasks">В настояще время нет активных задач!</span>
+                            </>
+                        ) : (
+                            <>
+                                <TodoList />
+                                <FilterTodo />
+                            </>
+                        )}
+                    </>
                 )}
                 <FontAwesomeIcon
                     className="todos-add-btn"
                     onClick={() => changeIsAdd(isAddMode)}
                     icon={faPlus}
+                    title="Добавить задачу"
                 />
             </div>
         // </DragDropContext>

@@ -25,9 +25,11 @@ const tasks = (state = TASKS, action) => {
             if (!newDays[payload.id]) {
                 newDays[payload.id] = {
                     id: payload.id,
+                    dayTitle: `${payload.day}.${payload.month}.${payload.year}`,
                     tasks: [],
                 };
             }
+            console.log(newDays[payload.id])
             return {
                 ...state, 
                 allDays: newDays,

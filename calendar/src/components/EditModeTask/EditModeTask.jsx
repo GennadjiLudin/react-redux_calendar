@@ -10,8 +10,10 @@ const EditModeTask = (props) => {
     const [description, setDescription] = useState(selectedTask.description);
 
     const handleClick = () => {
-        setEditMode(!editMode);
-        changeTask(selectedTask.id, title, description);
+        if (title.trim() !== '') {
+            setEditMode(!editMode);
+            changeTask(selectedTask.id, title, description);
+        }
     }
 
     return (

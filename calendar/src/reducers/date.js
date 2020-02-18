@@ -13,7 +13,7 @@ let DATES = {
 const date = (state = DATES, action) => {
     const { type, payload } = action;
     switch(type) {
-        case CHANGE_MONTH: 
+        case CHANGE_MONTH:
             return {
                 ...state,
                 month: payload.type === "next" ? getNextMonth(state.month) : getPrevMonth(state.month),
