@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/react-redux_calendar/static/css/main.e3f3beb6.chunk.css",
-    "main.js": "/react-redux_calendar/static/js/main.6ac27440.chunk.js",
-    "main.js.map": "/react-redux_calendar/static/js/main.6ac27440.chunk.js.map",
+    "main.css": "/react-redux_calendar/static/css/main.b3f3cea9.chunk.css",
+    "main.js": "/react-redux_calendar/static/js/main.00d882f9.chunk.js",
+    "main.js.map": "/react-redux_calendar/static/js/main.00d882f9.chunk.js.map",
     "runtime-main.js": "/react-redux_calendar/static/js/runtime-main.e0970a6c.js",
     "runtime-main.js.map": "/react-redux_calendar/static/js/runtime-main.e0970a6c.js.map",
     "static/js/2.9bbc0b36.chunk.js": "/react-redux_calendar/static/js/2.9bbc0b36.chunk.js",
     "static/js/2.9bbc0b36.chunk.js.map": "/react-redux_calendar/static/js/2.9bbc0b36.chunk.js.map",
     "index.html": "/react-redux_calendar/index.html",
-    "precache-manifest.7d641fb3f3676830f9effd9c0f19335d.js": "/react-redux_calendar/precache-manifest.7d641fb3f3676830f9effd9c0f19335d.js",
+    "precache-manifest.053f5ceda560e63cbdb43b0cd6464ebc.js": "/react-redux_calendar/precache-manifest.053f5ceda560e63cbdb43b0cd6464ebc.js",
     "service-worker.js": "/react-redux_calendar/service-worker.js",
-    "static/css/main.e3f3beb6.chunk.css.map": "/react-redux_calendar/static/css/main.e3f3beb6.chunk.css.map",
+    "static/css/main.b3f3cea9.chunk.css.map": "/react-redux_calendar/static/css/main.b3f3cea9.chunk.css.map",
     "static/js/2.9bbc0b36.chunk.js.LICENSE": "/react-redux_calendar/static/js/2.9bbc0b36.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.e0970a6c.js",
     "static/js/2.9bbc0b36.chunk.js",
-    "static/css/main.e3f3beb6.chunk.css",
-    "static/js/main.6ac27440.chunk.js"
+    "static/css/main.b3f3cea9.chunk.css",
+    "static/js/main.00d882f9.chunk.js"
   ]
 }
