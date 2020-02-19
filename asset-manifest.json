@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-redux_calendar-organizer/static/css/main.f9c43674.chunk.css",
+    "main.js": "/react-redux_calendar-organizer/static/js/main.b20bca5f.chunk.js",
+    "main.js.map": "/react-redux_calendar-organizer/static/js/main.b20bca5f.chunk.js.map",
+    "runtime-main.js": "/react-redux_calendar-organizer/static/js/runtime-main.910a7baa.js",
+    "runtime-main.js.map": "/react-redux_calendar-organizer/static/js/runtime-main.910a7baa.js.map",
+    "static/js/2.9bbc0b36.chunk.js": "/react-redux_calendar-organizer/static/js/2.9bbc0b36.chunk.js",
+    "static/js/2.9bbc0b36.chunk.js.map": "/react-redux_calendar-organizer/static/js/2.9bbc0b36.chunk.js.map",
+    "index.html": "/react-redux_calendar-organizer/index.html",
+    "precache-manifest.8be845aa7b067454835726276be75613.js": "/react-redux_calendar-organizer/precache-manifest.8be845aa7b067454835726276be75613.js",
+    "service-worker.js": "/react-redux_calendar-organizer/service-worker.js",
+    "static/css/main.f9c43674.chunk.css.map": "/react-redux_calendar-organizer/static/css/main.f9c43674.chunk.css.map",
+    "static/js/2.9bbc0b36.chunk.js.LICENSE": "/react-redux_calendar-organizer/static/js/2.9bbc0b36.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.910a7baa.js",
+    "static/js/2.9bbc0b36.chunk.js",
+    "static/css/main.f9c43674.chunk.css",
+    "static/js/main.b20bca5f.chunk.js"
+  ]
+}
