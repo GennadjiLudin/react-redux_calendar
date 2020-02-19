@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "39a4adb44c476645d0deda40820849ac",
+    "revision": "2b47596c6fcb4f961ed0a07f1b5450d5",
     "url": "/react-redux_calendar/index.html"
   },
   {
-    "revision": "c1da98a42887d2797afe",
+    "revision": "17ef02fbb12a24c22a54",
     "url": "/react-redux_calendar/static/css/main.e3f3beb6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-redux_calendar/static/js/2.9bbc0b36.chunk.js.LICENSE"
   },
   {
-    "revision": "c1da98a42887d2797afe",
-    "url": "/react-redux_calendar/static/js/main.6ebf5c93.chunk.js"
+    "revision": "17ef02fbb12a24c22a54",
+    "url": "/react-redux_calendar/static/js/main.6ac27440.chunk.js"
   },
   {
     "revision": "c99b1de4c6349756338f",
