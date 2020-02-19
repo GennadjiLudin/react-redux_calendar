@@ -19,7 +19,6 @@ import './Calendar.scss';
 
 const maxDays = 42;
 
-
 function Calendar(props) {
     const { month, year, getAllDays } = props;
     const [datesArr, setDatesArr] = useState([]);

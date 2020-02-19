@@ -9,6 +9,7 @@
     justify-content: space-around;
     align-items: center;
     overflow: hidden;
+    transition: .4s;
 
     &-selected {
         background-color: aliceblue;
@@ -36,5 +37,6 @@
 }
 
 .date-wrap__tasks {
+    margin-top: 1.8rem;
     width: 100%;
 }

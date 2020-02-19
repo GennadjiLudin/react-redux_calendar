@@ -27,12 +27,13 @@ const TodoList = (props) => {
         }
     
         setFilteredTasks(filterTasks(selectedDay.tasks, filters));
+        
     }, [filters, selectedDay.tasks]);
 
     return (
         // <Droppable droppableId={String(uuid())}>
         //     {provided => (
-                <div className="todo-list-wrap">
+                <div className={selectedDay.tasks.length >= 8 ? "todo-list-wrap todo-list-wrap-scroll" : "todo-list-wrap"}>
                     <ul /*{...provided.droppableProps} ref={provided.innerRef}*/ className="todo-list">
                         {/* <TransitionGroup> */}
                             {filteredTasks.map((taskList) => (

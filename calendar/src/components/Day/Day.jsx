@@ -24,7 +24,7 @@ const Day = (props) => {
             <span className={rightClassName}>{date}</span>
             <div className="date-wrap__tasks">
                 {allDays[id] && allDays[id].tasks.map((task, i) => (
-                    i < 5 && <DayTodo key={i} title={task.title} onClickDateHandler={onClickDateHandler} variables={task.variables} />
+                    i < 4 && <DayTodo key={i} title={task.title} onClickDateHandler={onClickDateHandler} variables={task.variables} />
                 ))}
             </div>
         </div>
