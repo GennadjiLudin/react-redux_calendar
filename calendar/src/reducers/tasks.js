@@ -29,7 +29,6 @@ const tasks = (state = TASKS, action) => {
                     tasks: [],
                 };
             }
-            console.log(newDays[payload.id])
             return {
                 ...state, 
                 allDays: newDays,

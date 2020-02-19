@@ -9,7 +9,7 @@ import './Social.scss';
 const Social = ({socialImg, link}) => {
     return (
         <a href={link} className="social" target="_blank" rel="noopener noreferrer"> 
-           <img src={`/img/svg/${socialImg}.svg`} alt="" className="social-img" />
+           <img src={`img/svg/${socialImg}.svg`} alt="" className="social-img" />
         </a>
     );
 }
