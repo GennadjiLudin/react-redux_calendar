@@ -2,7 +2,10 @@
     background-color: bisque;
     margin-bottom: .2rem;
     padding: 0 1rem;
+    cursor: default;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 80%;
+    border-radius: 4rem;
 }

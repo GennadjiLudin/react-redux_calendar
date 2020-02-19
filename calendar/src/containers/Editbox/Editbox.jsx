@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { changeTaskAction, changeIsAddModeAction, addTaskAction } from '../../actions/actionCreator';
-import ReadOnlyTask from '../../components/ReadOnlyTask/ReadOnlyTask';
-import EditModeTask from '../../components/EditModeTask/EditModeTask';
 import AddMode from '../../components/AddMode/AddMode';
+import SelectedTask from '../../components/SelectedTask/SelectedTask';
 
 import './Editbox.scss';
 
 const Editbox = (props) => {
     const { changeTask, selectedDay, selectedTask, isAddMode, changeIsAdd, addTask } = props;
-    const [editMode, setEditMode] = useState(false);
 
     return (
         <div className="editbox">
@@ -20,11 +18,7 @@ const Editbox = (props) => {
                         <AddMode changeIsAdd={changeIsAdd} isAddMode={isAddMode} addTask={addTask} />
                         ) : (
                             selectedTask ? (
-                                !editMode ? (
-                                        <ReadOnlyTask selectedTask={selectedTask} setEditMode={setEditMode} editMode={editMode} />
-                                    ) : (
-                                        <EditModeTask selectedTask={selectedTask} setEditMode={setEditMode} editMode={editMode} changeTask={changeTask} />
-                                    )
+                                <SelectedTask changeTask={changeTask} selectedTask={selectedTask} />
                             ) : (
                                 <div className="editbox-no-tasks">Выберете задачу</div>
                             )

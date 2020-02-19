@@ -90,7 +90,7 @@ const tasks = (state = TASKS, action) => {
                 ...state,
                 selectedDay: newSelectedDay,
                 allDays: newAllDaysObj,
-                selectedTask: payload.taskId === state.selectedTask.id ? null : state.selectedTask,
+                selectedTask: state.selectedTask && (payload.taskId === state.selectedTask.id ? null : state.selectedTask),
             };
         case COMPLETE_TASK:
             let newStateTasks = {

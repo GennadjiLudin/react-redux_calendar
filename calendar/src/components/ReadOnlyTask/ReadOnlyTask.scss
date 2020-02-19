@@ -10,33 +10,37 @@
 .editbox__task-wrap {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     width: 100%;
-    margin-bottom: 1rem;
     position: relative;
+    margin-bottom: 1rem;
 } 
 
 .editbox__task__name {
     font-size: 1.2rem;
     line-height: 1.5;
     font-weight: bold;
-    margin-bottom: 1rem;
 }
 
 .editbox__task__title, .editbox__task__description {
     width: 100%;
     font-size: 1.2rem;
-    padding: .2rem;
 }
 
 .editbox__task__title {
-    margin-bottom: 1.2rem;
+    word-wrap: break-word;
 }
 
 .editbox__task__description {
     height: 47%;
+    word-wrap: break-word;
+    overflow-y: auto;
+
+    &-empty {
+        color: #a3a3a3;
+    }
 }
 
 .editbox__edit-btn {
