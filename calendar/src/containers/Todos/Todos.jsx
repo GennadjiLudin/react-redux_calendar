@@ -36,6 +36,7 @@ const Todos = (props) => {
                         {selectedDay.tasks.length === 0 ? (
                             <>
                                 <span className="todos-no-tasks">В настояще время нет активных задач!</span>
+                                <div className="todos__empty-div"></div>
                             </>
                         ) : (
                             <>

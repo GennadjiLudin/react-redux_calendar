@@ -9,7 +9,7 @@
     justify-content: space-around;
     align-items: center;
     overflow: hidden;
-    transition: .4s;
+    transition: background-color .4s linear;
 
     &-selected {
         background-color: aliceblue;
@@ -27,7 +27,7 @@
             background-color: #f33;
             color: #fff;
             border-radius: 50%;
-            padding: .2rem .4rem .2rem .3rem;
+            padding: .2rem .4rem .2rem .4rem;
         }
 
         &-prev, &-next {

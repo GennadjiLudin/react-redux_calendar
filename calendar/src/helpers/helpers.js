@@ -38,7 +38,7 @@ export const getFirstElemsNum = (year, month) => {
 export const getLastElemsNum = (year, month) => {
     let jsLastDay = getLastDayOfMonth(year, month);
     let realLastDay = getRealDayOfWeek(jsLastDay);
-    return 7 - realLastDay + 7;
+    return 7 - realLastDay + 14;
 }
 
 export const getRealDayOfWeek = (jsDay) => {
