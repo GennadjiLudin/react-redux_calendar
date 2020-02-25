@@ -19,7 +19,7 @@
         width: 100%;
 
         .prev-btn {
-            margin-right: 3rem;
+            margin-right: 2rem;
             font-size: 2rem;
             cursor: pointer;
             color: darkgrey;
@@ -51,14 +51,31 @@
     }
 
     &__month-year-wrap {
+        margin-left: 5rem;
         text-align: center;
-        margin-right: 3rem;
-        width: 10rem;
         font-weight: bold;
+        text-transform: uppercase;
     }
 
     &__month {
         margin-right: .5rem;
+    }
+
+    &__today {
+        text-align: center;
+        margin-right: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .4s;
+
+        &:hover {
+            color: #f33;
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
     }
 }
 

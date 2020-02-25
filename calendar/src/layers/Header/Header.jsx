@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getMonthName } from '../../helpers/helpers';
-import { changeMonth, changeYear } from '../../actions/actionHeader';
+import { changeMonth, changeYear, today } from '../../actions/actionHeader';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +10,7 @@ import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons
 import './Header.scss';
 
 const Header = (props) => {
-    const {month, year, changeMonth, changeYear} = props;
+    const {month, year, changeMonth, changeYear, today} = props;
 
     const onClickHandlerPrev = () => {
         changeMonth("");
@@ -22,6 +22,10 @@ const Header = (props) => {
         if(month === 11) changeYear("next");
     }
 
+    // const onClickHandlerToday = () => {
+    //     let date = new Date();
+    // }
+
 
     return (
         <div className="header">
@@ -32,15 +36,21 @@ const Header = (props) => {
                     onClick={() => onClickHandlerPrev()}
                     icon={faChevronLeft}
                 />
-                <span className="header__month-year-wrap">
-                        <span className="header__month">{getMonthName(month)}</span>
-                        <span className="header__year">{year}</span>
+                <span
+                className="header__today"
+                onClick={() => today()}
+                >
+                    Сегодня
                 </span>
                 <FontAwesomeIcon
                     className="next-btn"
                     onClick={() => onClickHandlerNext()}
                     icon={faChevronRight}
                 />
+                <span className="header__month-year-wrap">
+                        <span className="header__month">{getMonthName(month)}</span>
+                        <span className="header__year">{year}</span>
+                </span>
             </span>
         </div>
     )
@@ -58,6 +68,7 @@ const mapDispatchToProps = dispatch => {
     return {
       changeMonth: type => dispatch(changeMonth(type)),
       changeYear: type => dispatch(changeYear(type)),
+      today: () => dispatch(today()),
     }
 };
 

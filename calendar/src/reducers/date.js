@@ -1,4 +1,4 @@
-import { CHANGE_MONTH, CHANGE_YEAR } from '../actions/actionHeader';
+import { CHANGE_MONTH, CHANGE_YEAR, TODAY } from '../actions/actionHeader';
 
 import { 
     getPrevMonth, 
@@ -22,6 +22,12 @@ const date = (state = DATES, action) => {
             return {
                 ...state,
                 year: payload.type === "next" ? state.year + 1 : state.year - 1,
+            }
+        case TODAY:
+            return {
+                ...state,
+                month: new Date().getMonth(),
+                year: new Date().getFullYear(),
             }
         default:
             return state;
