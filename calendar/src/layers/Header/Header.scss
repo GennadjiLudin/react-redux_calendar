@@ -51,9 +51,10 @@
     }
 
     &__month-year-wrap {
-        margin-left: 5rem;
         text-align: center;
         font-weight: bold;
+        margin-right: 3rem;
+        width: 10rem;
         text-transform: uppercase;
     }
 
@@ -68,6 +69,7 @@
         cursor: pointer;
         text-transform: uppercase;
         transition: .4s;
+        color: darkgrey;
 
         &:hover {
             color: #f33;

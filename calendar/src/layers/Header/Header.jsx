@@ -31,6 +31,10 @@ const Header = (props) => {
         <div className="header">
             <span className="header__logo">КАЛЕНДАРЬ-ОРГАНАЙЗЕР</span>
             <span className="header__info">
+                <span className="header__month-year-wrap">
+                    <span className="header__month">{getMonthName(month)}</span>
+                    <span className="header__year">{year}</span>
+                </span>
                 <FontAwesomeIcon
                     className="prev-btn"
                     onClick={() => onClickHandlerPrev()}
@@ -47,10 +51,6 @@ const Header = (props) => {
                     onClick={() => onClickHandlerNext()}
                     icon={faChevronRight}
                 />
-                <span className="header__month-year-wrap">
-                        <span className="header__month">{getMonthName(month)}</span>
-                        <span className="header__year">{year}</span>
-                </span>
             </span>
         </div>
     )
